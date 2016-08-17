@@ -1,0 +1,112 @@
+<div class="content-query" style="border-top: 0"> 
+	<div class="container">
+
+		<div class="text-center wrap_title">
+			<div id="intro">What would you like to track in real-time?</div>
+		</div>
+		
+		<div id="toggle-keyword-form">
+			<div id="form-toggle" class="text-center wrap_title">
+				<div class="button-container">
+					<a class="toggle-keyword" ng-class="{'active': activeMenu === 0}" ng-click="showQueryItems(0)">#hashtag</a>
+					<a class="toggle-keyword" ng-class="{'active': activeMenu === 1}" ng-click="showQueryItems(1)">@account</a>
+					<a class="toggle-keyword" ng-class="{'active': activeMenu === 2}" ng-click="showQueryItems(2)">keyword</a>
+					<a class="toggle-keyword" ng-class="{'active': activeMenu === 3}" ng-click="showQueryItems(3)">@mention</a>
+					<a class="toggle-keyword" ng-class="{'active': activeMenu === 4}" ng-click="showQueryItems(4)">URL</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="query-master">
+		
+			<!-- 
+				<form action="primary.jsp" method="post">
+			-->
+			
+			<form action="formservice" method="post">
+				<div id="query-text">
+					<div class="text-center wrap_title">
+						<span class="inputWithButton">
+							<input type="text" ng-model="query" ng-attr-placeholder="{{ queryPlaceholder }}" name="query" id="query">
+							<button type="submit" id="btn-search"><b>Search</b></button>
+						</span>   
+					</div>
+				</div>
+				
+				<div id="social-media">
+					<!-- hashtag -->
+					<div id="twitter-fb-checkbox" ng-show="activeMenu === 0">
+						
+						<div class="container">
+							<div class="row">
+							
+								<div class="col-md-5 text-right">
+									<!-- <label class="checkbox-inline"> -->
+										<input type="checkbox" checked="checked" name="socmed_check" id="twt_check" value="TwitterCheck">
+										
+										<span class="fa-stack fa-2x">
+											<i class="fa fa-circle fa-stack-2x"></i>
+											<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+										</span>			
+									<!-- </label> -->
+								</div>
+								
+								<div class="col-md-2"></div>
+								
+								<div class="col-md-5 text-left">
+									<!-- <label class="checkbox-inline"> -->
+										<input type="checkbox" name="socmed_check" id="fb_check" value="FacebookCheck">
+										
+										<span class="fa-stack fa-2x">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+										</span>
+									<!-- </label> -->
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<!-- account -->
+					<div id="twitter-fb-radio" ng-show="activeMenu === 1">
+						
+						<div class="container">
+							<div class="row">
+							
+								<div class="col-md-5 text-right">
+									<!--<label class="radio-inline">-->
+										<input type="radio" checked="checked" name="socmed_radio" id="twt_radio" value="TwitterRadio">							
+											<span class="fa-stack fa-2x">
+												<i class="fa fa-circle fa-stack-2x"></i>
+												<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+											</span>			
+									<!--</label>-->
+								</div>
+								
+								<div class="col-md-2"></div>
+								
+								<div class="col-md-5 text-left">
+									<!--<label class="radio-inline">-->
+										<input type="radio" name="socmed_radio" id="fb_radio" value="FacebookRadio">								
+										<span class="fa-stack fa-2x">
+											<i class="fa fa-square fa-stack-2x"></i>
+											<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+										</span>
+									<!--</label>-->
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<!-- keyword -->
+					<div ng-show="activeMenu === 2">
+						this is my keyword
+					</div>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
