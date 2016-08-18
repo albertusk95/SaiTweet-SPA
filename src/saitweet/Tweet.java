@@ -1,10 +1,6 @@
 package saitweet;
 
-//import java.util.ArrayList;
-//import java.util.LinkedList;
 import java.util.List;
-
-//import javax.swing.ImageIcon;
 
 import twitter4j.MediaEntity;
 import twitter4j.Query;
@@ -13,24 +9,11 @@ import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-//import twitter4j.User;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class Tweet {
 
 	public static List<Status> qrTweets;
-	//public static List<String> tweetText = null;
-	
-	/*
-	 * Clear all list elements
-	 */
-	/*
-	public static void clearList() {
-		if (tweetText != null) {
-			tweetText.clear();
-		}
-	}
-	*/
 	
 	/*
 	 * Extract Twitter data
@@ -46,18 +29,13 @@ public class Tweet {
 		cb.setOAuthAccessTokenSecret("fDBcQDeiaBH1BVUVJ1OduRdsHTs4ozZMScOY8KYqgd0It");
 		
 		Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-		
-		//List<String> result = new LinkedList<String>();
-		
+				
 		Query query = new Query(tweet+" +exclude:retweets");
 		query.setCount(2); 	// set tweets per page to 2
 		query.setLang("en");
 		
 		QueryResult qr = twitter.search(query);
 		qrTweets = qr.getTweets();
-		
-		//String imgTemp = null;
-		//ImageIcon img;
 		
 		//Preprocessor pp = new Preprocessor();
  		
@@ -82,20 +60,7 @@ public class Tweet {
             }
         
  		}
-
-		/*
-		img = loadImage(imgTemp, "png"); 
-		  img.resize(600,0);
-		  image(img,0,0); 
-		*/
 		  
 	 }
 	
-	/*
-	public static void setTweetText() {
-		for (Status t : qrTweets) {
-			tweetText.add(t.getText());
-		}
-	}
-	*/
 }
