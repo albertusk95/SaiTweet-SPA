@@ -4,6 +4,7 @@
 <%@ page import="saitweet.Tweet" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- VERTICAL NAVBAR -->	
 
@@ -56,7 +57,7 @@
 				<!-- 
 				<table border="1" class="table table-striped" style="width: 100%; display: block; table-layout: fixed;">
 				-->
-				<table border="1" class="table table-striped" style="width: 100%; table-layout: fixed;">
+				<table  class="table table-striped" style="width: 100%; table-layout: fixed;">
 				
 					<thead>
 				  		<tr>
@@ -68,7 +69,7 @@
 				      		</th>
 				      		
 				      		<!-- user full name -->
-				      		<th class="userFullname" style="width: 85%;">
+				      		<th class="userFullname" style="width: 85%; max-width:450px; word-wrap:break-word;">
 				      			
 				      			<c:out value="${item.getUser().getName()}" />
 				      			
@@ -76,7 +77,7 @@
 				    	</tr>
 					    <tr>
 					    	<!-- username -->
-					      	<th class="userUsername" style="width: 85%;">
+					      	<th class="userUsername" style="width: 85%; max-width:450px; word-wrap:break-word;">
 					      		<c:out value="${item.getUser().getScreenName()}" />
 					      	</th>
 					    </tr>
@@ -101,7 +102,7 @@
 			<!-- Table showing detail of the tweet -->
 			<div id="${loop.index}" style="display: none; margin-bottom: 100px">
 	            
-	            <table border="1" class="table" style="width: 100%; table-layout: fixed;">
+	            <table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
 				  <tbody>
 				  	<!-- Tweet info -->
 				    <tr>
@@ -120,7 +121,7 @@
 				    <tr>
 				    	<td style="width: 20%;">Posted time</td>
 				      	<td style="max-width:450px; word-wrap:break-word;">
-				      		<c:out value="${item.getUser().getCreatedAt() }" />
+				      		<c:out value="${item.getCreatedAt()}" />
 				      	</td>
 				    </tr>
 				    <tr>
@@ -131,21 +132,38 @@
 									<c:out value="${item.getUser().getLocation()}" />        
 							    </c:when>    
 							    <c:otherwise>
-							        NULL BOS !
+							        <c:out value="---" />
 							    </c:otherwise>
 							</c:choose>
 				      	</td>
 				    </tr>
 				    
+				    <!-- Tweet URL -->
+				    <tr>
+				    	<td style="text-align: center;">
+				    		<c:out value="Tweet URL" />
+				    	</td>
+				    	<td colspan="2" style="max-width:450px; word-wrap:break-word;">
+				    		<a href="https://twitter.com/${item.getUser().getScreenName()}/status/${item.getId()}">
+				    			<c:out value="https://twitter.com/${item.getUser().getScreenName()}/status/${item.getId()}" />
+				    		</a>
+				    	</td>
+				    </tr>
+				    
 				    <!-- Media Entities -->
 			    	
-				    	<c:forEach var="media" items="${item.getMediaEntities()}">
-					      	<tr>
-					      	<td style="max-width:450px; word-wrap:break-word;">
-					      		<c:out value="${media.getMediaURLHttps()}" />
-					      	</td>
-					      	</tr>				      
-					   	</c:forEach>
+			    	<c:forEach var="media" items="${item.getMediaEntities()}" varStatus="counterMedia">
+				      	<tr>
+				      		<td style="text-align: center;">
+				      			<c:out value="Media ${counterMedia.index}" />
+				      		</td>
+				      		<td colspan="2" style="max-width:450px; word-wrap:break-word;">
+				      			<a href="${media.getMediaURLHttps()}">
+				      				<c:out value="${media.getMediaURLHttps()}" />
+				      			</a>
+				      		</td>
+				      	</tr>				      
+				   	</c:forEach>
 					
 				  </tbody>
 				  
