@@ -49,12 +49,17 @@ public class Trainer {
 		trainCombined();
 	}
 	
-	/**Getters*/
+	/**
+	 * GETTERS
+	 */
+	
+	/*
+	 * Text: all of the two words combinations
+	 */
 	public BidiMap<String, Integer> getTextAttributes(){
 		try{
 			tba.clear();
 			
-			// file path: resources/attributes/text.tsv
 			BufferedReader rdr = new BufferedReader(new FileReader(new File(folder+"attributes/text.tsv")));
 			String inline;
 			
@@ -72,8 +77,12 @@ public class Trainer {
 		return tba;
 	}
 	
+	/*
+	 * Feature: all of the one word combinations
+	 */
 	public BidiMap<String, Integer> getFeatureAttributes(){
-		try{
+		
+		try {
 			fba.clear();
 			
 			BufferedReader rdr = new BufferedReader(new FileReader(new File(folder+"attributes/feature.tsv")));
@@ -91,9 +100,14 @@ public class Trainer {
 		return fba;
 	}
 	
+	/*
+	 * Complex: all of the two words combinations where each word has their own TAGGER 
+	 */
 	public BidiMap<String, Integer> getComplexAttributes(){
-		try{
+		
+		try {
 			cba.clear();
+			
 			BufferedReader rdr = new BufferedReader(new FileReader(new File(folder+"attributes/complex.tsv")));
 			String inline;
 			

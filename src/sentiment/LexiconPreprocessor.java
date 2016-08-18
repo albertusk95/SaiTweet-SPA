@@ -43,7 +43,14 @@ public class LexiconPreprocessor {
 	}
 	
 	/**Some common pre-processing stuff*/
-	public double[] getProcessed(String str, MaxentTagger tagger){
+	public double[] getProcessed(String str, MaxentTagger tagger) {
+		
+		/*
+		 * Regex:
+		 * ^[a-zA-Z]: match all strings that start with a letter 
+		 * [^a-zA-Z]: match all strings that contain a non-letter
+		 */
+		
 		StringTokenizer st = new StringTokenizer(str);
 		String current;
 		String toreturn = "";
@@ -290,12 +297,14 @@ public class LexiconPreprocessor {
 			String line;	
 			while ((line=brdr2.readLine()) != null){
 				k++;
+				
+				// k > 34 so that we dont read the comments above
 				if (k>34)
 					positive.add(line);
 			}
 			brdr2.close();
 		}catch (FileNotFoundException fnf){
-			System.out.println("Negative File not found");
+			System.out.println("Positive keywords file not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -312,12 +321,14 @@ public class LexiconPreprocessor {
 			int k = -1;
 			while ((line=brdr.readLine()) != null){
 				k++;
+				
+				// k > 34 so that we dont read the comments above
 				if (k>34)
 					negative.add(line.toLowerCase());
 			}
 			brdr.close();
 		}catch (FileNotFoundException fnf){
-			System.out.println("Negative File not found");
+			System.out.println("Negative keywords file not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

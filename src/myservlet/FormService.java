@@ -1,24 +1,27 @@
 package myservlet;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+//import java.io.BufferedReader;
+//import java.util.HashMap;
+//import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONArray;
+//import org.json.JSONException;
+//import org.json.JSONObject;
+
+import java.io.IOException;
+
+import twitter4j.TwitterException;
 
 import saitweet.Query;
 import saitweet.Tweet;
-import twitter4j.TwitterException;
+import sentiment.Processor;
 
 /**
  * Servlet implementation class FormService
@@ -64,11 +67,17 @@ public class FormService extends HttpServlet {
 		try {
 			//Tweet.clearList();
 			Tweet.extractTweet(query);
-			//Tweet.setTweetText();
+			Tweet.setTweetText();
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
 		
+		// initiate sentiment processor
+		try {
+			Processor.startProcessor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		// debugging
 		System.out.println("HELLO DOPOST");

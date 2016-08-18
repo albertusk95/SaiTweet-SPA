@@ -1,5 +1,6 @@
 package saitweet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import twitter4j.MediaEntity;
@@ -14,6 +15,7 @@ import twitter4j.conf.ConfigurationBuilder;
 public class Tweet {
 
 	public static List<Status> qrTweets;
+	public static List<String> qrTweets_Text = new ArrayList<String>();
 	
 	/*
 	 * Extract Twitter data
@@ -61,6 +63,18 @@ public class Tweet {
         
  		}
 		  
-	 }
+	}
+	
+	// set the value for list of tweet text
+	public static void setTweetText() {
+		
+		if (qrTweets_Text != null) {
+			qrTweets_Text.clear();
+		}
+		
+		for (Status t : qrTweets) {
+			qrTweets_Text.add(t.getText());
+		}
+	}
 	
 }

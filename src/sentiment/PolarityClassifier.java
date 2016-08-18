@@ -34,22 +34,34 @@ public class PolarityClassifier {
 	StringToWordVector stwv;
 	
 
-	/**Constructor of the class. "tba", "fba" and "cba" refer to the "attribute-->position" relations.*/
+	/**
+	 * Constructor of the class. 
+	 * tba, fba and cba refer to the (attribute-->index) relations.
+	 */
 	public PolarityClassifier(String f, BidiMap<String, Integer> tb, BidiMap<String, Integer> fb, BidiMap<String, Integer> cb){
 		
 		System.out.println("PC ctor");
-
+		
+		// resource directory
 		folder = f;
+		
+		// initiate BidiMap objects
 		initializeAttributes(tb, fb, cb);
+		
+		// initiate Instances objects for text, feature, and complex representation
 		text = new Instances[2];
 		feature = new Instances[2];
 		complex = new Instances[2];	
+		
+		// initiate StringToWordVector and NGramTokenizer
 		initialiseTextFilter();
+		
+		// initiate MNB and SVM classifier from the previous built model
 		initializeClassifiers();
 	}
 	
 	/**Begins the algorithm.*/
-	public String test(String dataset, Instances[] all){
+	public String test(Instances[] all){
 		String output = "";
 		try {
 			text[0] = getText(all[0]);
@@ -73,7 +85,10 @@ public class PolarityClassifier {
 	
 	
 	
-	/**The main method that sets up all the processes of the Ensemble classifier. Returns the decision made by the two classifiers.*/
+	/*
+	 * The main method that sets up all the processes of the Ensemble classifier. 
+	 * Returns the decision made by the two classifiers
+	 */
 	private String apply() throws Exception{
 		double[] hc = applyHC();		// applies the HC and returns the results
 		double lc = applyLC();			// same for LC
@@ -310,7 +325,9 @@ public class PolarityClassifier {
 		return newData;
 	}
 	
-	/**Initializes the StringToWordVector filter to be used in the representations.*/
+	/**
+	 * Initializes the StringToWordVector filter to be used in the representations
+	 */
 	private void initialiseTextFilter() {
 		/*
 		 * Example
@@ -323,8 +340,8 @@ public class PolarityClassifier {
 		stwv = new StringToWordVector();
 		stwv.setLowerCaseTokens(true);
 		stwv.setMinTermFreq(1);
-		//stwv.setUseStoplist(false);
 		
+		//stwv.setUseStoplist(false);
 		
 		stwv.setTFTransform(false);
 		stwv.setIDFTransform(false);		
@@ -335,10 +352,16 @@ public class PolarityClassifier {
 		stwv.setTokenizer(tokenizer);
 	}
 	
-	/**Initializes the MNB and SVM classifiers, by loading the previously generated models.*/
+	/**
+	 * Initializes the MNB and SVM classifiers, by loading the previously generated models
+	 */
 	private void initializeClassifiers(){
+		
 		mnb_classifiers = new Classifier[3];
+		
 		try {
+			
+			// read the previous built model
 			mnb_classifiers[0] = (Classifier) weka.core.SerializationHelper.read(folder+"/models/text.model");
 			mnb_classifiers[1] = (Classifier) weka.core.SerializationHelper.read(folder+"/models/feature.model");
 			mnb_classifiers[2] = (Classifier) weka.core.SerializationHelper.read(folder+"/models/complex.model");
@@ -349,9 +372,11 @@ public class PolarityClassifier {
 			BufferedReader trdr = new BufferedReader(new FileReader(new File(folder+"/train/T.arff")));
 			BufferedReader frdr = new BufferedReader(new FileReader(new File(folder+"/train/F.arff")));
 			BufferedReader crdr = new BufferedReader(new FileReader(new File(folder+"/train/C.arff")));
+			
 			training_text = new Instances(trdr);
 			training_feature = new Instances(frdr);
 			training_complex = new Instances(crdr);
+			
 			trdr.close();
 			frdr.close();
 			crdr.close();
@@ -362,7 +387,9 @@ public class PolarityClassifier {
 		}
 	}
 	
-	/**Initializes the BidiMaps.*/
+	/**
+	 * Initializes the BidiMaps
+	 */
 	private void initializeAttributes(BidiMap<String, Integer> tb, BidiMap<String, Integer> fb, BidiMap<String, Integer> cb){
 		tba = new DualHashBidiMap<String, Integer>();
 		fba = new DualHashBidiMap<String, Integer>();

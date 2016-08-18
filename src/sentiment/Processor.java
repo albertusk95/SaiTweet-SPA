@@ -1,33 +1,53 @@
 package sentiment;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
+
+import saitweet.Tweet;
 
 /*
  *	Main class
  */
 public class Processor {
-
-	static String main_folder = "resources/";						// the path to the "resources" folder 
+	
+	// Attributes
+	static String pathToGetAttr = System.getProperty("user.home") + "/workspace/TwitterServlet/";
+	static String main_folder = pathToGetAttr + "resources/";						// the path to the "resources" folder 
 	static String test_dataset = "Liebherr";						// available options for demo: goethe, Liebherr, Cisco
 	static boolean useSlidingWindowForTraining = false;				// if set to "true", only the last 1,000 documents will be used for the training of the ensemble classifier
 	
+	private static List<String> tweetText;
+	
+	
+	// Methods
+	public static void startProcessor() throws Exception {
+		
+		System.out.println("start processor");
+		
+		// initiate tweetText with the extracted tweets
+		tweetText = Tweet.qrTweets_Text;
+		
+		// create objek SentimentAnalyser
+		SentimentAnalyser analyser = new SentimentAnalyser(main_folder, useSlidingWindowForTraining, test_dataset);
+		
+		// start the analysis for the extracted tweets
+		for (String twtText : tweetText) {
+			System.out.println("Text: " + twtText);
+			System.out.println(analyser.getPolarity(twtText));	// any text may be passed as an argument here
+		}
+	}
+	
+	/*
 	public static void main(String[] args) throws Exception {
 		
 		// get all test set elements
 		LinkedList<String> lt = getData(test_dataset);				
 		
 		SentimentAnalyser analyser = new SentimentAnalyser(main_folder, useSlidingWindowForTraining, test_dataset);
-		
-		/*
-		for (int i=0; i<lt.size(); i++){
-			System.out.println(analyser.getPolarity(lt.get(i)));	// any text may be passed as an argument here
-			//System.out.println(i+"\t"+out);
-		}
-		*/
-		
+			
 		// test case
 		LinkedList<String> ltc = new LinkedList<String>();
 
@@ -57,6 +77,7 @@ public class Processor {
 			System.out.println(analyser.getPolarity(ltc.get(i)));	// any text may be passed as an argument here
 		}
 	}
+	*/
 	
 	private static LinkedList<String> getData(String f){
 		LinkedList<String> all_tweets = new LinkedList<String>();

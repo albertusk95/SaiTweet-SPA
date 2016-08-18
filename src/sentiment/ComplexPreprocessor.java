@@ -9,7 +9,11 @@ public class ComplexPreprocessor {
 	public String getProcessed(String str, MaxentTagger tagger){
 
 		String toreturn = "";
-		toreturn = getPOS(toreturn, tagger);
+		/* Original code:
+		 * toreturn = getPOS(toreturn, tagger);
+		 */
+		
+		toreturn = getPOS(str, tagger);
 		return toreturn;
 	}
 	

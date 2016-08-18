@@ -13,7 +13,7 @@ import weka.core.SparseInstance;
 public class TweetPreprocessor {
 	
 	String tweet;
-	long maxid;
+	//long maxid;
 	String main_folder;
 	TextPreprocessor tp;
 	ComplexPreprocessor cp;
@@ -26,24 +26,30 @@ public class TweetPreprocessor {
 	MaxentTagger tagger;
 	
 	public TweetPreprocessor(String t){
-		maxid = 0;
+		//maxid = 0;
+		
+		// resource directory
 		main_folder = t;
+		
+		// preprocessor (filterer) for text, feature, and complex representation
 		tp = new TextPreprocessor(main_folder);
 		cp = new ComplexPreprocessor();
 		fp = new FeaturePreprocessor(main_folder);
 		
-		//try {
-			tagger = new MaxentTagger(main_folder+"datasets/wsj-0-18-left3words-distsim.tagger");
-		//} 
+		// part of speech tagger
+		tagger = new MaxentTagger(main_folder+"datasets/wsj-0-18-left3words-distsim.tagger");
 		
 		/*
-		catch (ClassNotFoundException e) {
+		try {
+			tagger = new MaxentTagger(main_folder+"datasets/wsj-0-18-left3words-distsim.tagger");
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		*/
 		
+		// preprocessor (filterer) for lexicon
 		try {
 			lp = new LexiconPreprocessor(main_folder);
 		} catch (IOException e) {
@@ -64,20 +70,21 @@ public class TweetPreprocessor {
 	/**Setter*/
 	public void setTweet(String t){
 		tweet = t;
-		maxid++;
+		//maxid++;
 	}
 	
-	public String startProc(){
-		String dataset = Double.toString(maxid);
-		String processed_text = getTextInstances();	// instantiates text_instances and returns the processed text
+	public void startProc(){
+		//String dataset = Double.toString(maxid);
+		String processed_text = getTextInstances();	
 		getComplexInstances(processed_text);
-		getFeatureInstances();						// instantiates feature_instances (no need to return anything here)
+		getFeatureInstances();						
 		setLexiconInstances();
-		return dataset;
+		//return dataset;
 	}
 	
-	
-	/**Instantiates the text-based Instances*/
+	/*
+	 * Instantiates the text-based Instances
+	 */
 	private String getTextInstances(){
 		ArrayList<Attribute> atts = new ArrayList<Attribute>(2);
         ArrayList<String> classVal = new ArrayList<String>();
@@ -85,9 +92,11 @@ public class TweetPreprocessor {
         classVal.add("negative");
         atts.add(new Attribute("sentimentClassAttribute",classVal));
         atts.add(new Attribute("text",(ArrayList<String>)null));
+        
+        // create instances (relation) with name TextInstances with attributes atts and initial size 0
         Instances textRaw = new Instances("TextInstances",atts,0);
         
-        // process the tweet 
+        // processes the tweet 
         double[] instanceValue1 = new double[textRaw.numAttributes()];
         String tmp_txt = tp.getProcessed(tweet);
         instanceValue1[1] = textRaw.attribute(1).addStringValue(tmp_txt);
@@ -96,7 +105,9 @@ public class TweetPreprocessor {
         return tmp_txt;
 	}
 	
-	/**Initializes the feature-based Instances*/
+	/*
+	 * Initiates the feature-based Instances
+	 */
 	private void getFeatureInstances(){
 		ArrayList<Attribute> atts = new ArrayList<Attribute>(2);
         ArrayList<String> classVal = new ArrayList<String>();
@@ -111,7 +122,9 @@ public class TweetPreprocessor {
 		feature_instances = new Instances(textRaw);
 	}
 	
-	/**Instantiates the complex-based Instances*/
+	/*
+	 * Initiates the complex-based Instances
+	 */
 	private String getComplexInstances(String processed_text){
 		ArrayList<Attribute> atts = new ArrayList<Attribute>(2);
         ArrayList<String> classVal = new ArrayList<String>();

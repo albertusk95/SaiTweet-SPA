@@ -47,6 +47,12 @@ public class SentimentAnalyser {
 	 * @throws Exception
 	 */
 	public SentimentAnalyser(String main_folder, boolean useSW, String test_dataset) throws Exception {
+		
+		/* 
+		 * Initiates:
+		 * - resource directory
+		 * - BidiMap objects for text, feature, and complex representation
+		 */
 		tr = new Trainer(main_folder);			//tr.train();
 		System.out.println("object tr created");
 		
@@ -56,31 +62,58 @@ public class SentimentAnalyser {
 		// evaluate lexicon model
 		//tr.evaluateLexicon();
 		
+		/*
+		 * Initiates:
+		 * - resource directory
+		 * - BidiMap objects for text, feature, and complex representation
+		 * - Filter: StringToWordVector and NGramTokenizer
+		 * - Classifier: MNB and SVM
+		 */
 		pc = new PolarityClassifier(main_folder, tr.getTextAttributes(), tr.getFeatureAttributes(), tr.getComplexAttributes());
 		System.out.println("object pc created");
 		
+		/*
+		 * Initiates:
+		 * - resource directory
+		 * - preprocessor (filterer) for text, feature, and complex representation
+		 * - part of speech tagger (POS Tagger)
+		 * - preprocessor (filterer) for lexicon
+		 */
 		tp = new TweetPreprocessor(main_folder);
 		System.out.println("object tp created");
 		
+		/*
+		 * Initiates:
+		 * - Filter: StringToWordVector and NGramTokenizer
+		 */
 		initializeFilter();
 		System.out.println("initializeFilter done");
 		
 		useSlidingWindow = useSW;
 		
 		
-		// create attributes element, namely text (String) and sentimentClass (positive, negative)
-        ArrayList<Attribute> attributes = new ArrayList<Attribute>();
+		/*
+         * Initiates:
+         * -  Attributes elements, namely text (String) and sentimentClass (positive, negative)
+         */
+		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
         ArrayList<String> classVal = new ArrayList<String>();
         classVal.add("positive");
         classVal.add("negative");
         attributes.add(new Attribute("text", (ArrayList<String>) null));
         attributes.add(new Attribute("sentimentClassValue", classVal));
         
-        // create instance for data train
-		train = new Instances("somerel", attributes, 0);
+        /*
+		 * Initiates:
+		 * - Instances for train data with initial size equals 0
+		 */
+        train = new Instances("somerel", attributes, 0);
 		train.setClassIndex(1);
 		
-		// create instance for data test
+		/*
+		 * Initiates:
+		 * - Instances for data test with initial size equals 0
+		 */
 		test = new Instances("somerel", attributes, 0);
 		test.setClassIndex(1);
 		
@@ -108,13 +141,25 @@ public class SentimentAnalyser {
 	/**Starts the whole process: preprocesses the given tweet, creates different representations
 	 * of it (stored in "all[]" Instances) and tests it in the PolarityClassifier class.*/
 	public String getPolarity(String tweet){
+		
 		tp.setTweet(tweet);
-		String dataset = tp.startProc();
+		
+		/*
+		 * Initiates:
+		 * - text instances (ex: ?, 'this is a text')
+		 * - feature instances
+		 * - complex instances
+		 */
+		tp.startProc();
 		Instances[] all = tp.getAllInstances();
-		String out = pc.test(dataset, all);
-		if (useSlidingWindow == true){
+		
+		String out = pc.test(all);
+		
+		if (useSlidingWindow == true) {
 		//if (useSlidingWindow == false){
-			if (out.contains("pos") || out.contains("neg")){	//if HC and LC agree ("positive"/"negative"), then put this document in the training set			
+			if (out.contains("pos") || out.contains("neg")) {	
+				// if HC and LC agree ("positive"/"negative"), 
+				// then put this document in the training set			
 				double[] instanceValues = new double[train.numAttributes()];
 		        instanceValues[0] = train.attribute(0).addStringValue(tweet);
 		        if (out.contains("pos"))
@@ -125,7 +170,9 @@ public class SentimentAnalyser {
 		        	train.remove(0);
 		        }
 		        train.add(new DenseInstance(1.0, instanceValues));
-			} else{		// in case of HC & LC disagreement, add the document in the test set; it will be classified in the end of the process.
+			} else {		
+				// in case of HC & LC disagreement, 
+				// add the document in the test set; it will be classified in the end of the process
 				if (train.numInstances()>0)
 					out = clarifyOnSlidingWindow(tweet);
 				else
@@ -135,14 +182,17 @@ public class SentimentAnalyser {
 			if (out.contains("pos") || out.contains("neg")) {
 				//System.out.println("use false");
 				return out;
-			} else{
+			} else {
 				out = clarifyOnModel(tweet);
 			}
 		}
 		return out;
 	}
 	
-	/**Decides upon a "disagreed" document by applying the learned model based on the last 1,000 "agreed" documents.*/
+	/*
+	 * Decides upon a "disagreed" document by applying the learned model based on 
+	 * the last 1,000 "agreed" documents
+	 */
 	private String clarifyOnSlidingWindow(String tweet){
 		String out = "";
         double[] instanceValues = new double[train.numAttributes()];
@@ -167,7 +217,10 @@ public class SentimentAnalyser {
 		return out;
 	}
 	
-	/**Decides upon a "disagreed" document by applying the learned model based on the previously build model.*/
+	/*
+	 * Decides upon a "disagreed" (out = nan) document by applying the learned model based on 
+	 * the previously build model
+	 */
 	private String clarifyOnModel(String tweet){
 		String out = "";
 		
@@ -175,7 +228,8 @@ public class SentimentAnalyser {
         double[] instanceValues = new double[2];
         instanceValues[0] = test.attribute(0).addStringValue(tweet);
         test.add(new SparseInstance(1.0, instanceValues));
-        try{
+        
+        try {
         	stwv.setInputFormat(test);
         	Instances newData = Filter.useFilter(test, stwv);
     		
@@ -196,7 +250,9 @@ public class SentimentAnalyser {
 		return out;
 	}
 	
-	/**Re-order the attributes of the given Instances according to the training file; keeps Weka happy.*/
+	/*
+	 * Re-order the attributes of the given Instances according to the training file
+	 */
 	private Instances reformatText(Instances text_test){	
 		// remove the attributes from the test set that are not used in the train set
 		String[] options = new String[2];
@@ -234,7 +290,9 @@ public class SentimentAnalyser {
 		}
 		return null;
 	}
-	/**StringToWordVector filter initialization.*/
+	/**
+	 * StringToWordVector filter initialization
+	 */
 	private void initializeFilter(){
 		stwv = new StringToWordVector();
 		stwv.setLowerCaseTokens(true);
