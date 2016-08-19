@@ -48,8 +48,10 @@ public class Processor {
 		// empty the list of tweet sentiment
 		Tweet.initTweetSentimentList();
 		
-		// empty the list of tweet preprocessed
+		// empty the list of tweet preprocessed (text, feature, and complex)
 		Tweet.initTweetPreprocessed();
+		Tweet.initTweetPreprocFeature();
+		Tweet.initTweetPreprocComplex();
 		
 		// start the analysis for the extracted tweets
 		for (String twtText : tweetText) {

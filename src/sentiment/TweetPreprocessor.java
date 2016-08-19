@@ -128,6 +128,9 @@ public class TweetPreprocessor {
         String featurePreProc = fp.getProcessed(tweet);
         System.out.println("Preprocessed feature: " + featurePreProc);
         
+        // add to the list of preprocessed tweet (feature)
+        Tweet.setTweetPreprocFeature(featurePreProc);
+        
         instanceValue1[1] = textRaw.attribute(1).addStringValue(featurePreProc);
         textRaw.add(new SparseInstance(1.0, instanceValue1));
 		feature_instances = new Instances(textRaw);
@@ -148,6 +151,9 @@ public class TweetPreprocessor {
         
         String tmp_cmplx = cp.getProcessed(processed_text, tagger);
         System.out.println("Preprocessed complex: " + tmp_cmplx);
+        
+        // add to the list of preprocessed tweet (complex)
+        Tweet.setTweetPreprocComplex(tmp_cmplx);
         
         instanceValue1[1] = textRaw.attribute(1).addStringValue(tmp_cmplx);
         textRaw.add(new SparseInstance(1.0, instanceValue1));

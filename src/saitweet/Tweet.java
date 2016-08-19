@@ -19,7 +19,11 @@ public class Tweet {
 	public static List<String> qrTweets_Text = new ArrayList<String>();
 	public static List<String> qrTweets_Sentiment = new ArrayList<String>();
 	public static List<String> qrTweets_Preprocessed = new ArrayList<String>();
+	public static List<String> qrTweets_PreprocFeature = new ArrayList<String>();
+	public static List<String> qrTweets_PreprocComplex = new ArrayList<String>();
+	
 	public static List<String> qrTweets_Semantic = new ArrayList<String>();
+	public static int qrTweets_TotalItem;
 	
 	/*
 	 * Extract Twitter data
@@ -86,6 +90,11 @@ public class Tweet {
 		}
 	}
 	
+	// set the total number of the extracted tweet
+	public static void setTotalTweet() {
+		qrTweets_TotalItem = qrTweets.size();
+	}
+	
 	// set the sentiment value for every tweet
 	public static void setTweetSentiment(String sv) {
 		
@@ -104,6 +113,18 @@ public class Tweet {
 		qrTweets_Preprocessed.add(sv);
 	}
 	
+	// set the list of preprocessed tweet (feature)
+	public static void setTweetPreprocFeature(String sv) {
+		
+		qrTweets_PreprocFeature.add(sv);
+	}
+	
+	// set the list of preprocessed tweet (complex)
+	public static void setTweetPreprocComplex(String sv) {
+		
+		qrTweets_PreprocComplex.add(sv);
+	}
+	
 	// empty the list of tweet sentiment
 	public static void initTweetSentimentList() {
 		if (qrTweets_Sentiment != null) {
@@ -115,6 +136,20 @@ public class Tweet {
 	public static void initTweetPreprocessed() {
 		if (qrTweets_Preprocessed != null) {
 			qrTweets_Preprocessed.clear();
+		}
+	}
+
+	// empty the list of preprocessed tweet (feature)
+	public static void initTweetPreprocFeature() {
+		if (qrTweets_PreprocFeature != null) {
+			qrTweets_PreprocFeature.clear();
+		}
+	}
+
+	// empty the list of preprocessed tweet (complex)
+	public static void initTweetPreprocComplex() {
+		if (qrTweets_PreprocComplex != null) {
+			qrTweets_PreprocComplex.clear();
 		}
 	}
 	

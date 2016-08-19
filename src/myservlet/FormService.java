@@ -55,11 +55,12 @@ public class FormService extends HttpServlet {
 		String[] socmedCheck = request.getParameterValues("socmed_check");
 		
 		// extract Twitter data
+		
 		try {
 			Tweet.setQuery(query);
 			Tweet.extractTweet(query);
 			Tweet.setTweetText();
-			
+			Tweet.setTotalTweet();
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -73,6 +74,7 @@ public class FormService extends HttpServlet {
 		
 		// initiate semantic processor
 		Runner.startRunner();
+		
 		
 		// debugging
 		System.out.println("HELLO DOPOST");
