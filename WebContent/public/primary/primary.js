@@ -43,6 +43,13 @@ angular.module('primary', ['ngRoute'])
 	    	
 	    });
 	}
+	
+	
+	$scope.selectedID = -1;
+	$scope.selectedTweetID = function() {
+		$scope.selectedID = $scope.selectedOption;
+		console.log("selectedID: " + $scope.selectedID);
+	}
 		
 }]);
 

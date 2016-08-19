@@ -31,19 +31,21 @@
 	</div>
 </div>
 
+<!-- SUPPORT VARIABLE -->
+<c:set var="tweetNum" value="<%= Tweet.qrTweets_TotalItem %>" />
+<c:set var="sentimentItem" value="<%= Tweet.qrTweets_Sentiment %>" />
+<c:set var="tweetTextItem" value="<%= Tweet.qrTweets_Text %>" />
+<c:set var="tweetPrepropItem" value="<%= Tweet.qrTweets_Preprocessed %>" />
+<c:set var="tweetPrepropFeature" value="<%= Tweet.qrTweets_PreprocFeature %>" />
+<c:set var="tweetPrepropComplex" value="<%= Tweet.qrTweets_PreprocComplex %>" />
+<c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
+
 <!-- DASHBOARD AREA -->
 <div class="testTweet" ng-show="selectedView === 0">
  
-		<c:set var="tweetNum" value="<%= Tweet.qrTweets.size() %>" />
-		
-		<div class="tweetContainer">
+		<div class="titleContainer">
 			<h1>TweetNum is <c:out value="${tweetNum}" /></h1>
 		</div>
-		
-		<c:set var="sentimentItem" value="<%= Tweet.qrTweets_Sentiment %>" />
-		<c:set var="tweetTextItem" value="<%= Tweet.qrTweets_Text %>" />
-		<c:set var="tweetPrepropItem" value="<%= Tweet.qrTweets_Preprocessed %>" />
-		<c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
 		
 		<c:forEach var="item" items="<%= Tweet.qrTweets %>" varStatus="loop">
 			
@@ -218,4 +220,133 @@
 <!-- SENTIMENT AREA -->
 <div class="testTweet" ng-show="selectedView === 1">
 	
+	<div class="titleContainer">
+		<h2>Select Tweet ID</h2>
+	</div>
+	
+	<div id="tweetIDContainer">
+		
+		<h2>Chosen: {{selectedID}}</h2>
+		
+		<select class="form-control" ng-model="selectedOption" ng-change="selectedTweetID()">
+			
+			<!-- FOR TESTING -->
+			<!-- 
+			<c:forEach var="tweetID" begin="0" end="3">
+				<option><c:out value="${tweetID}" /></option>	
+			</c:forEach>
+			-->
+			   
+			<!-- ORIGIN LOGIC -->
+			<c:choose>
+			    <c:when test="${tweetNum > 0}">
+					
+					<c:forEach var="tweetID" begin="0" end="${tweetNum-1}">
+						<option><c:out value="${tweetID}" /></option>	
+					</c:forEach>
+					        
+			    </c:when>    
+			    <c:otherwise>
+			                
+			    </c:otherwise>
+			</c:choose>
+			
+		</select>	
+	
+	</div>
+	
+	<!-- BISA DITAMPILKAN USESLIDINGWINDOW, FILTER, TOKENIZER NYA -->
+	
+	<c:forEach var="itemSentiment" begin="0" end="${tweetNum-1}" varStatus="loopSentiment">
+		
+		<div class="sentimentContainer" ng-show="selectedID == ${loopSentiment.index}">
+			
+			<table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td style="width: 25%; text-align: center;">Text</td>
+					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+						<c:out value="${tweetTextItem.get(loopSentiment.index)}" />
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="3" style="width: 25%; text-align: center; vertical-align: middle;">
+						<b>Preprocessed</b>
+					</td>
+					<td style="width: 20%; text-align: center;">Text</td>
+					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+						<c:out value="${tweetPrepropItem.get(loopSentiment.index)}" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 20%; text-align: center;">Feature</td>
+					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+						<c:out value="${tweetPrepropFeature.get(loopSentiment.index)}" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 20%; text-align: center;">Complex</td>
+					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+						<c:out value="${tweetPrepropComplex.get(loopSentiment.index)}" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td rowspan="6" style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Class distribution</b>
+					</td>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Text
+					</td>
+					<td>Positive</td>
+					<td>0</td>
+				</tr>	
+				<tr>
+					<td>Negative</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Feature
+					</td>
+					<td>Positive</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Negative</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Complex
+					</td>
+					<td>Positive</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Negative</td>
+					<td>0</td>
+				</tr>
+				
+				<tr>
+					<td rowspan="3" style="width: 25%; text-align: center; vertical-align: middle;">
+						<b>Classification stage</b>
+					</td>
+					<td style="width: 20%; text-align: center;">Polarity Classifier</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td style="width: 20%; text-align: center;">classifyOnSW</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td style="width: 20%; text-align: center;">classifyOnModel</td>
+					<td>0</td>
+				</tr>
+				
+				
+			</table>
+			
+		</div>
+		
+	</c:forEach>
 </div>

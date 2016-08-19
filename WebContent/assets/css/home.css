@@ -256,7 +256,7 @@ input, button {
 	padding-top: 170px;
 }
 
-.tweetContainer {
+.tweetContainer, .sentimentContainer {
 	border-radius: 15px;
 	background-color: #ffffff;
 	margin-bottom: 5px;
