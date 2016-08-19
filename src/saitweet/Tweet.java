@@ -18,6 +18,8 @@ public class Tweet {
 	public static List<Status> qrTweets;
 	public static List<String> qrTweets_Text = new ArrayList<String>();
 	public static List<String> qrTweets_Sentiment = new ArrayList<String>();
+	public static List<String> qrTweets_Preprocessed = new ArrayList<String>();
+	public static List<String> qrTweets_Semantic = new ArrayList<String>();
 	
 	/*
 	 * Extract Twitter data
@@ -86,7 +88,41 @@ public class Tweet {
 	
 	// set the sentiment value for every tweet
 	public static void setTweetSentiment(String sv) {
+		
 		qrTweets_Sentiment.add(sv);
+	}
+	
+	// set the semantic value for every tweet
+	public static void setTweetSemantic(String sv) {
+		
+		qrTweets_Semantic.add(sv);
+	}
+	
+	// set the list of preprocessed tweet
+	public static void setTweetPreprocessed(String sv) {
+		
+		qrTweets_Preprocessed.add(sv);
+	}
+	
+	// empty the list of tweet sentiment
+	public static void initTweetSentimentList() {
+		if (qrTweets_Sentiment != null) {
+			qrTweets_Sentiment.clear();
+		}
+	}
+	
+	// empty the list of preprocessed tweet
+	public static void initTweetPreprocessed() {
+		if (qrTweets_Preprocessed != null) {
+			qrTweets_Preprocessed.clear();
+		}
+	}
+	
+	// empty the list of tweet semantic
+	public static void initTweetSemanticList() {
+		if (qrTweets_Semantic != null) {
+			qrTweets_Semantic.clear();
+		}
 	}
 	
 }

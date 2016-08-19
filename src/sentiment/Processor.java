@@ -45,6 +45,12 @@ public class Processor {
 			analyser = new SentimentAnalyser(main_folder, useSlidingWindowForTraining, test_dataset);
 		}
 		
+		// empty the list of tweet sentiment
+		Tweet.initTweetSentimentList();
+		
+		// empty the list of tweet preprocessed
+		Tweet.initTweetPreprocessed();
+		
 		// start the analysis for the extracted tweets
 		for (String twtText : tweetText) {
 			

@@ -9,6 +9,7 @@ import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.SparseInstance;
 
+import saitweet.Tweet;
 
 public class TweetPreprocessor {
 	
@@ -98,7 +99,13 @@ public class TweetPreprocessor {
         
         // processes the tweet 
         double[] instanceValue1 = new double[textRaw.numAttributes()];
+        
         String tmp_txt = tp.getProcessed(tweet);
+        System.out.println("Preprocessed text: " + tmp_txt);
+        
+        // add to the list of preprocessed tweet
+        Tweet.setTweetPreprocessed(tmp_txt);
+        
         instanceValue1[1] = textRaw.attribute(1).addStringValue(tmp_txt);
         textRaw.add(new SparseInstance(1.0, instanceValue1));
 		text_instances = new Instances(textRaw);
@@ -117,7 +124,11 @@ public class TweetPreprocessor {
         atts.add(new Attribute("text",(ArrayList<String>)null));
         Instances textRaw = new Instances("TextInstances",atts,0);
         double[] instanceValue1 = new double[textRaw.numAttributes()];
-        instanceValue1[1] = textRaw.attribute(1).addStringValue(fp.getProcessed(tweet));
+        
+        String featurePreProc = fp.getProcessed(tweet);
+        System.out.println("Preprocessed feature: " + featurePreProc);
+        
+        instanceValue1[1] = textRaw.attribute(1).addStringValue(featurePreProc);
         textRaw.add(new SparseInstance(1.0, instanceValue1));
 		feature_instances = new Instances(textRaw);
 	}
@@ -134,7 +145,10 @@ public class TweetPreprocessor {
         atts.add(new Attribute("text",(ArrayList<String>)null));
         Instances textRaw = new Instances("TextInstances",atts,0);
         double[] instanceValue1 = new double[textRaw.numAttributes()];
+        
         String tmp_cmplx = cp.getProcessed(processed_text, tagger);
+        System.out.println("Preprocessed complex: " + tmp_cmplx);
+        
         instanceValue1[1] = textRaw.attribute(1).addStringValue(tmp_cmplx);
         textRaw.add(new SparseInstance(1.0, instanceValue1));
 		complex_instances = new Instances(textRaw);
@@ -156,7 +170,12 @@ public class TweetPreprocessor {
         atts.add(new Attribute("sentimentClassAttribute",classVal));
         
         Instances textRaw = new Instances("TextInstances",atts,0);
+        
         double[] vals = lp.getProcessed(tweet, tagger);
+        for (double myItem : vals) {
+        	System.out.println("Preprocessed lexicon: " + Double.toString(myItem));
+        }
+        
         textRaw.add(new SparseInstance(1.0, vals));
 		lexicon_instances = new Instances(textRaw);
 	}

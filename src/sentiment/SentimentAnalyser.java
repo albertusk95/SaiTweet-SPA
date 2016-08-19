@@ -35,10 +35,11 @@ public class SentimentAnalyser {
 	Classifier multiNB;
 	Instances training_text;
 	
-	/**Constructor. 
-	 * "main_folder" is provided in order to define the initial directory to work on; 
-	 * "useSW" refers to whether the training should be made on the most recent 1,000 tweets or no.
-	 * @throws Exception */
+	/** Constructor 
+	 * "main_folder" - define the initial directory to work on; 
+	 * "useSW" - whether the training should be made on the most recent 1,000 tweets or no.
+	 * @throws Exception 
+	 */
 	
 	/**
 	 * @param main_folder resources/

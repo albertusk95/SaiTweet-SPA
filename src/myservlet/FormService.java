@@ -16,6 +16,7 @@ import twitter4j.TwitterException;
 
 import saitweet.Tweet;
 import sentiment.Processor;
+import semantic.Runner;
 
 /**
  * Servlet implementation class FormService
@@ -58,6 +59,7 @@ public class FormService extends HttpServlet {
 			Tweet.setQuery(query);
 			Tweet.extractTweet(query);
 			Tweet.setTweetText();
+			
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -68,6 +70,9 @@ public class FormService extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// initiate semantic processor
+		Runner.startRunner();
 		
 		// debugging
 		System.out.println("HELLO DOPOST");
