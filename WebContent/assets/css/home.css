@@ -286,8 +286,26 @@ td, th {
 	padding-left: 9px;
 }
 
-/* DETAIL BUTTON CONTAINER */
+/* DETAIL CONTAINER */
+.detailContainer {
+  display: flex;
+}
+
 .detailButtonContainer {
+	flex: 1;
+	border-radius: 15px;
+	background-color: #c9c9c9;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	margin-right: 90px;
+	margin-bottom: 40px;
+	width: 140px;
+	height: 30px;
+}
+
+.detailAnalysisContainer {
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;

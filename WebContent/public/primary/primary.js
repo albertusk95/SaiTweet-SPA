@@ -20,7 +20,7 @@ angular.module('primary', ['ngRoute'])
 	}
 	
 	$scope.showDetails = function(item) {
-		console.log("showdetail: " + item);
+		console.log("show details: " + item);
 		/*
 		$("#"+item).show( "slow", function() {
 			// Animation complete.
@@ -29,33 +29,20 @@ angular.module('primary', ['ngRoute'])
 		var $target = $("#"+item), $toggle = $(this);
 	
 	    $target.slideToggle( 500, function () {
-	        //$toggle.text(($target.is(':visible') ? 'Hide' : 'Show') + ' My Bag');
+
 	    });
 			
 	}
 	
-	/*
-	$scope.divID = -1;
-	
-	$scope.initID = function() {
-		$scope.divID = $scope.divID + 1;
-		console.log("divID: " + $scope.divID);
+	$scope.showAnalysis = function(item) {
+		console.log("show analysis: " + item);
+		
+		var $target = $("#analysis"+item), $toggle = $(this);
+		
+	    $target.slideToggle( 500, function () {
+	    	
+	    });
 	}
-	*/
-	
-	/*
-	$scope.getNumber = function(num) {
-	    return new Array(num);   
-	}
-	*/
-	
-	/*
-	var divCount = 0;
-
-	$scope.setID = function () {
-		$container.append('<div id="' + $container.children().length + 1 + '"></div>');
-	}
-	*/
-	
+		
 }]);
 

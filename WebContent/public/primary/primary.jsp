@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-<%@ page import="saitweet.Query" %>
 <%@ page import="saitweet.Tweet" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -94,9 +93,14 @@
 			</div>
 			
 			<!-- DETAIL BUTTON -->
-			
-			<div class="detailButtonContainer" ng-click="showDetails(${loop.index})">
-				<b>Show details</b>
+			<div class="detailContainer">
+				<div class="detailButtonContainer" ng-click="showDetails(${loop.index})">
+					<b>Show details</b>
+				</div>
+				
+				<div class="detailAnalysisContainer" ng-click="showAnalysis(${loop.index})">
+					<b>Show Analysis</b>
+				</div>
 			</div>
 			
 			<!-- Table showing detail of the tweet -->
@@ -170,6 +174,22 @@
 				</table>
 					            
 	     	</div>
+		
+			<!-- Table showing analysis detail -->
+			<div id="analysis${loop.index}" style="display: none; margin-bottom: 100px">
+				<table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
+					<tbody>
+						<tr>
+							<td style="text-align: center;">
+								Sentiment
+							</td>
+							<td style="text-align: center;">
+								<c:out value="<%= %>" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		
 		</c:forEach>
 		
