@@ -1,0 +1,161 @@
+@XiaomiIndia @hbarra @manukumarjain @RedmiIndia never buy mi product bad service they don't have spare parts they always fool customers
+This is clever: An app that wakes you up earlier when traffic’s bad: https://t.co/IQOig20qgj
+Do 'potato security' product vendors realise that winning buzzword bingo is actually a bad thing?
+I honest to God don't know why Steve Jobs and his whole entire entourage hates me. Every time I have an Apple product something BAD happens.
+Not a bad article on Flow in design to UI focused - 7 Rules Driving the Psychology Behind Great Product Design
+Donald Trump is the #Sharknado4 of candidates: no longer funny, all about product placement, and mostly just bad effects.
+Not done too bad. Just the frustration of lacking the final product. Nothing new there. I'm sure Klopp will rectify it though!
+Thank you @PzDeals for the excellent hook up with the shot glasses, good quality product
+Trump is like cigarettes...he's bad for your health, investors put millions into a dangerous product & when he's put down people defend him!
+@Huscoon you are the product of two horny animals and a night of bad decision making.
+Bad reviews are great sources for product development. Good reviews are great source of ad copies. Listen to your customers! #HackYourGrowth
+Overall, the TL is a good value with lots of standard equipment and smooth engine. But styling and the crash protection could be better.
+@herpderphannah @D________R it's not a bad product! in fact in other countries I think it's not even a premium item
+@ChckEngineLight yeah. Most of them aren't 'bad' movies. Just made quick and economical and a product of their time.
+……..wasn’ too bad, just a minor change to WACC for scenario analysis. how can you not love excel [only @microsoft product that works well]
+ltc.add("#PokemonGo player finds dead body of woman floating in water at Woodlands Waterfont Park http://str.sg/4TWk");
+		ltc.add("There are reports that 3rd party #PokemonGO stat-tracking site, PokeAdvisor, has been shut down by @NianticLabs.");
+		ltc.add("#PokemonGo has taken me to see some amazing art and sculptures. But none as #cool as this Eagle! #child #bigkid #fun");
+		ltc.add("'Pokemon Go' causes national security concerns http://s.nikkei.com/2aFs9Jj");
+		ltc.add("Going to be doing a giveaway next week! #pokemon #pokemongo #badge #gottacatchemall #90s #gamersunite #competition");
+		ltc.add("*NEW VIDEO* THIS POKEMON UPDATE IS GARBAGE");
+		ltc.add("@PokemonGoApp Resolve my issue or else you can be sure that I will write a incredibly strongly worded Yelp review about you. #PokemonGO");
+		ltc.add("i left a 1 star review on pokemon go and will hope that does something. still gonna hit up my local areas though, can't lie");
+		
+		ltc.add("Pokemon Go Surpasses 100 Million Downloads On Google Play");
+		ltc.add("I JUST HATCHED A 5K EGG AND THIS IS WHAT WAS INSIDE, I AM SO ANGRY #PokemonGO");
+		ltc.add("Disappointed with both evolutions #PokemonGO #TeamMystic");
+		ltc.add("Twitch Is Now Helping #PokémonGO Catch All the Cheaters http://www.themarysue.com/twitch-pokemon-go-cheating-crackdown/");
+		ltc.add("Hang in there, trainers! Many reports are coming in that the servers are offline. #PokemonGO");
+		ltc.add("20-year-old baseball star was killed Saturday night while Playing #PokemonGo. http://l.gamespot.com/6018B07wA");
+		ltc.add("I CAUGHT THEM ALL NOW WHAT DO I DO WITH MY LIFE?! #PokemonGO");
+		ltc.add("Through the drama we made it to 3.3k I love each and every one of you #PokemonGO");
+		ltc.add("Giving away 30,200 Coins to 3 random people who Retweet and Follow @TrendsTube_ ! Ends in 24 hours! Good luck! #PokemonGO");
+
+Test: Pokemon Go Surpasses 100 Million Downloads On Google Play
+Class predicted: NEGATIVE
+----------------------------
+Test: I JUST HATCHED A 5K EGG AND THIS IS WHAT WAS INSIDE, I AM SO ANGRY #PokemonGO
+Class predicted: NEGATIVE
+----------------------------
+Test: Disappointed with both evolutions #PokemonGO #TeamMystic
+Class predicted: POSITIVE
+----------------------------
+Test: Twitch Is Now Helping #PokémonGO Catch All the Cheaters http://www.themarysue.com/twitch-pokemon-go-cheating-crackdown/
+Class predicted: POSITIVE
+----------------------------
+Test: Hang in there, trainers! Many reports are coming in that the servers are offline. #PokemonGO
+Class predicted: POSITIVE
+----------------------------
+Test: 20-year-old baseball star was killed Saturday night while Playing #PokemonGo. http://l.gamespot.com/6018B07wA
+Class predicted: POSITIVE
+----------------------------
+Test: I CAUGHT THEM ALL NOW WHAT DO I DO WITH MY LIFE?! #PokemonGO
+Class predicted: POSITIVE
+----------------------------
+Test: Through the drama we made it to 3.3k I love each and every one of you #PokemonGO
+Class predicted: POSITIVE
+----------------------------
+Test: Giving away 30,200 Coins to 3 random people who Retweet and Follow @TrendsTube_ ! Ends in 24 hours! Good luck! #PokemonGO
+Class predicted: POSITIVE
+----------------------------
+
+==========================================
+
+labeled instance ?,' USERNAME hi ken I\'m stuck in Dublin huge snooker fan but no red button or any way to be at v live SMILESAD could you help' - NEG: 1.0 POS: 0.0
+labeled instance ?,' I miss my bad ass crew SMILESAD URL' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME I\'ll be sitting with the home fans don\'t think anyone will mind if I show my allegiance if we do it Vardy banned though SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' this is so SAD SMILESAD STAN STELLAR' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME unofficial poor Rachael she just wants to help us make fresh and healthy 30 minute meals SMILESAD' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME nicole09 found it in the bathroom SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME I didn\'t see this in my mentions SMILESAD but thank you so much I was first row it was more than amazing' - NEG: 0.0 POS: 1.0
+labeled instance ?,' I feel bad for just following Mei SMILESAD She\'s so nice I-' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME you are not an iron SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME she\'s been mean on every show SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME USERNAME USERNAME it\'s awful isn\'t it - not safe anywhere unattended SMILESAD' - NEG: 1.0 POS: 0.0
+labeled instance ?,' What a week for Irish MMA USERNAME cut from UFC200 USERNAME a traitor to his people Now USERNAME forced to retire SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' luke hemmings why is it so hard to follow me SMILESAD' - NEG: 1.0 POS: 0.0
+labeled instance ?,' my baby\'s all grown SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME hope you feel better SMILESAD' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME lucyflight I miss u SMILESAD SMILESAD SMILESAD' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME we\'ve tried that SMILESAD We\'ve tried two different kinds even He doesn\'t seem bothered' - NEG: 1.0 POS: 0.0
+labeled instance ?,' WELP it\'s late and I need to go sleep SMILESAD' - NEG: 1.0 POS: 0.0
+labeled instance ?,' Girl same SMILESAD URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' i\'m trying luke hemmings follow since ever and I feel like giving up SMILESAD' - NEG: 0.0 POS: 1.0
+
+negative
+negative
+positive
+negative
+positive
+negative
+light positive
+negative
+negative
+negative
+negative
+negative
+negative
+negative
+positive
+negative
+negative
+negative
+light positive
+light positive
+
+===========================================
+
+labeled instance ?,' This morning we found out USERNAME is a 2016/17 JSK Fellow D URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday >> URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Stats for the day have arrived 1 new follower and NO unfollowers SMILEHAPPY via URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday >> URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME But one thing nearly all \"groups\" say CoD needs to have a more serious style again No word on era here Each might work SMILEHAPPY' - NEG: 1.0 POS: 0.0
+labeled instance ?,' Our marriage story made me smile \"D Why did we even talk about that larissa \'D Did you like me like thát P' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME Sounds good to us We are always craving the opportunity to see more of you SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME Did you get that deliciousness yet Jamir AllDayBreakfast is here whenever you can cruise over SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME dont forget who you are and about people who helped you SMILEHAPPY always remember your fans SMILEHAPPY Follow me plz plzxx' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME it\'s hard being such a huge fan SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME deepak USERNAME Happy to connect SMILEHAPPY have a great Monday >> URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday >> Get FREE URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' MothersDay is May 8th OrigamiOwl jewelry is perfect for gifting URL You\'re welcome SMILEHAPPY URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday Want this ? >> URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' \"i hate fnaf so what I\'m going to do is announce how much its \'cancerous shit\' and how the fans need to kill themself every day D\" kek' - NEG: 1.0 POS: 0.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday >> URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME I played with you in a 6 before go to your pics SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday >> Get FREE URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME So damn happy for you Congrats SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME USERNAME Happy to connect SMILEHAPPY have a great Monday ??Grow followers ? URL ??' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Still relevant SMILEHAPPY URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME Good SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' Thanks for the recent follow USERNAME fault USERNAME Happy to connect SMILEHAPPY have a great Monday >> Get FREE URL' - NEG: 0.0 POS: 1.0
+labeled instance ?,' omw to puppy sit future service dogs again SMILEHAPPY' - NEG: 1.0 POS: 0.0
+labeled instance ?,' USERNAME thank you SMILEHAPPY' - NEG: 0.0 POS: 1.0
+labeled instance ?,' USERNAME We\'re glad you appreciate D' - NEG: 0.0 POS: 1.0
+
+light positive
+positive
+positive
+positive
+positive
+light positive
+positive
+positive
+positive
+negative
+positive
+positive
+positive
+positive
+negative
+positive
+positive
+positive
+positive
+positive
+positive
+positive
+positive
+light positive
+positive
+positive
