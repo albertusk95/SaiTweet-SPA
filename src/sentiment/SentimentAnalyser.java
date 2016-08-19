@@ -138,8 +138,10 @@ public class SentimentAnalyser {
 
 	
 
-	/**Starts the whole process: preprocesses the given tweet, creates different representations
-	 * of it (stored in "all[]" Instances) and tests it in the PolarityClassifier class.*/
+	/*
+	 * Starts the whole process: preprocesses the given tweet, creates different representations
+	 * of it (stored in "all[]" Instances) and tests it in the PolarityClassifier class
+	 */
 	public String getPolarity(String tweet){
 		
 		tp.setTweet(tweet);

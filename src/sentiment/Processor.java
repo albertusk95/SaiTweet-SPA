@@ -20,23 +20,44 @@ public class Processor {
 	static boolean useSlidingWindowForTraining = false;				// if set to "true", only the last 1,000 documents will be used for the training of the ensemble classifier
 	
 	private static List<String> tweetText;
-	
+	private static SentimentAnalyser analyser;
 	
 	// Methods
 	public static void startProcessor() throws Exception {
+		
+		String sentimentValue;
 		
 		System.out.println("start processor");
 		
 		// initiate tweetText with the extracted tweets
 		tweetText = Tweet.qrTweets_Text;
 		
-		// create objek SentimentAnalyser
-		SentimentAnalyser analyser = new SentimentAnalyser(main_folder, useSlidingWindowForTraining, test_dataset);
+		// create object SentimentAnalyser
+		if (analyser != null) {
+			System.out.println("analyser object has already been CREATED");
+			if (analyser.pc == null) {
+				System.out.println("analyser.pc is null");
+			} else {
+				System.out.println("analyser PC folder: " + analyser.pc.folder);
+			}
+		} else {
+			System.out.println("analyser status: " + analyser);
+			analyser = new SentimentAnalyser(main_folder, useSlidingWindowForTraining, test_dataset);
+		}
 		
 		// start the analysis for the extracted tweets
 		for (String twtText : tweetText) {
+			
+			// get the sentiment value for every tweet
+			sentimentValue = analyser.getPolarity(twtText);
+			
+			// set the sentiment value as the Tweet attribute
+			Tweet.setTweetSentiment(sentimentValue);
+			
+			// show the result in console
 			System.out.println("Text: " + twtText);
-			System.out.println(analyser.getPolarity(twtText));	// any text may be passed as an argument here
+			System.out.println(sentimentValue);	
+			
 		}
 	}
 	

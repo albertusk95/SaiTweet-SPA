@@ -1,10 +1,5 @@
 package myservlet;
 
-//import java.io.BufferedReader;
-//import java.util.HashMap;
-//import java.util.Map;
-
-//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +14,6 @@ import java.io.IOException;
 
 import twitter4j.TwitterException;
 
-import saitweet.Query;
 import saitweet.Tweet;
 import sentiment.Processor;
 
@@ -59,13 +53,9 @@ public class FormService extends HttpServlet {
 		// checkbox value
 		String[] socmedCheck = request.getParameterValues("socmed_check");
 		
-		// set query and chosen social media as global value
-		Query.setQuery(query, socmedCheck);
-		
 		// extract Twitter data
-		
 		try {
-			//Tweet.clearList();
+			Tweet.setQuery(query);
 			Tweet.extractTweet(query);
 			Tweet.setTweetText();
 		} catch (TwitterException e) {

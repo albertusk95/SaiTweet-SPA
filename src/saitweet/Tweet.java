@@ -14,8 +14,10 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class Tweet {
 
+	public static String tweetQuery;
 	public static List<Status> qrTweets;
 	public static List<String> qrTweets_Text = new ArrayList<String>();
+	public static List<String> qrTweets_Sentiment = new ArrayList<String>();
 	
 	/*
 	 * Extract Twitter data
@@ -65,6 +67,11 @@ public class Tweet {
 		  
 	}
 	
+	// set the query
+	public static void setQuery(String tweetQuery) {
+		Tweet.tweetQuery = tweetQuery;
+	}
+	
 	// set the value for list of tweet text
 	public static void setTweetText() {
 		
@@ -75,6 +82,11 @@ public class Tweet {
 		for (Status t : qrTweets) {
 			qrTweets_Text.add(t.getText());
 		}
+	}
+	
+	// set the sentiment value for every tweet
+	public static void setTweetSentiment(String sv) {
+		qrTweets_Sentiment.add(sv);
 	}
 	
 }
