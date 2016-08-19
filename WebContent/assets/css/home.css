@@ -287,12 +287,15 @@ td, th {
 }
 
 /* DETAIL CONTAINER */
+/*
 .detailContainer {
   display: flex;
 }
+*/
 
 .detailButtonContainer {
-	flex: 1;
+	/*flex: 1;*/
+	float: left;
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;
@@ -306,6 +309,7 @@ td, th {
 }
 
 .detailAnalysisContainer {
+	float: left;
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;

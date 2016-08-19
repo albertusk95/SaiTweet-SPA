@@ -11,23 +11,15 @@
 	
 	<ul id="navbarVertical" class="nav navbar-nav">
 		<li><a ng-class="{'activePrimary': selectedView === 0}" ng-click="setView(0)">DASHBOARD</a></li>
-		<li><a ng-class="{'activePrimary': selectedView === 1}" ng-click="setView(1)">TWEETS</a></li>
-		<li><a ng-class="{'activePrimary': selectedView === 2}" ng-click="setView(2)">SENTIMENT</a></li>
+		<li><a ng-class="{'activePrimary': selectedView === 1}" ng-click="setView(1)">SENTIMENT</a></li>
+		<li><a ng-class="{'activePrimary': selectedView === 2}" ng-click="setView(2)">SEMANTIC</a></li>
 	</ul>
 
 </div>
 
 <!-- END OF VERTICAL NAVBAR -->
 
-<div class="selectedView" ng-show="selectedView === 0">
-	<div class="container">	
-		<div id="intro">
-		
-		</div>
-	</div>
-</div>
-
-<div class="selectedView" ng-show="selectedView === 1">
+<div class="selectedView" ng-show="selectedView === 2">
 	<div class="container">
 		<div id="intro">
 			This is link2 page This is link2 page this is link2 page<br />
@@ -39,8 +31,8 @@
 	</div>
 </div>
 
-<!-- Tweet container -->
-<div class="testTweet" ng-show="selectedView === 2">
+<!-- DASHBOARD AREA -->
+<div class="testTweet" ng-show="selectedView === 0">
  
 		<c:set var="tweetNum" value="<%= Tweet.qrTweets.size() %>" />
 		
@@ -48,6 +40,10 @@
 			<h1>TweetNum is <c:out value="${tweetNum}" /></h1>
 		</div>
 		
+		<c:set var="sentimentItem" value="<%= Tweet.qrTweets_Sentiment %>" />
+		<c:set var="tweetTextItem" value="<%= Tweet.qrTweets_Text %>" />
+		<c:set var="tweetPrepropItem" value="<%= Tweet.qrTweets_Preprocessed %>" />
+		<c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
 		
 		<c:forEach var="item" items="<%= Tweet.qrTweets %>" varStatus="loop">
 			
@@ -180,11 +176,35 @@
 				<table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
 					<tbody>
 						<tr>
-							<td style="text-align: center;">
+							<td style="width: 25%; text-align: center;">
+								Text
+							</td>
+							<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+								<c:out value="${tweetTextItem.get(loop.index)}" />
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 25%; text-align: center;">
+								Preprocessed text
+							</td>
+							<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+								<c:out value="${tweetPrepropItem.get(loop.index)}" />
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 25%; text-align: center;">
 								Sentiment
 							</td>
-							<td style="text-align: center;">
-								<c:out value="<%= %>" />
+							<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+								<c:out value="${sentimentItem.get(loop.index)}" />
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 25%; text-align: center;">
+								Semantic
+							</td>
+							<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+								<c:out value="${semanticItem.get(loop.index)}" />
 							</td>
 						</tr>
 					</tbody>
@@ -193,4 +213,9 @@
 		
 		</c:forEach>
 		
+</div>
+
+<!-- SENTIMENT AREA -->
+<div class="testTweet" ng-show="selectedView === 1">
+	
 </div>
