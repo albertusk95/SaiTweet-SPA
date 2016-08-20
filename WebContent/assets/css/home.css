@@ -256,7 +256,7 @@ input, button {
 	padding-top: 170px;
 }
 
-.tweetContainer, .sentimentContainer {
+.tweetContainer, .sentimentContainer, .moreMathContainer {
 	border-radius: 15px;
 	background-color: #ffffff;
 	margin-top: 90px;
@@ -303,14 +303,14 @@ td, th {
 	padding-right: 10px;
 	padding-bottom: 5px;
 	padding-left: 20px;
-	margin-right: 90px;
+	margin-right: 70px;
 	margin-bottom: 40px;
 	width: 140px;
 	height: 30px;
 }
 
 .detailAnalysisContainer {
-	float: left;
+	/*float: left;*/
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;
@@ -322,6 +322,33 @@ td, th {
 	height: 30px;
 }
 
+.moreMathIntro {
+	margin-top: 50px; 
+	margin-bottom: 40px;
+	border-radius: 15px;
+	background-color: #c9c9c9;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	width: 150px;
+	height: 100px;
+}
+
+.titleContainer {
+	margin-bottom: 40px;
+	border-radius: 15px;
+	background-color: #c9c9c9;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	width: 150px;
+	height: 100px;
+		
+}
+
+/*
 .moreMathButtonContainer {
 	border-radius: 15px;
 	background-color: #c9c9c9;
@@ -329,8 +356,9 @@ td, th {
 	padding-right: 10px;
 	padding-bottom: 5px;
 	padding-left: 20px;
-	margin-top: 100px;
+	margin-top: 90px;
 	margin-bottom: 40px;
 	width: 140px;
 	height: 30px;
 }
+*/
