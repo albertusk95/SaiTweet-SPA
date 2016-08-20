@@ -53,6 +53,14 @@ public class Processor {
 		Tweet.initTweetPreprocFeature();
 		Tweet.initTweetPreprocComplex();
 		
+		// empty the list of class distribution (text, feature, and complex)
+		Tweet.initClassDistText();
+		Tweet.initClassDistFeature();
+		Tweet.initClassDistComplex();
+		
+		// empty the list of PolarityClassifier predicted class
+		Tweet.initPredClass();
+		
 		// start the analysis for the extracted tweets
 		for (String twtText : tweetText) {
 			

@@ -77,7 +77,7 @@ public class Classify {
 		instances.add(instance);
  		
 		System.out.println("===== Instance created with reference dataset =====");
-		System.out.println(instances);
+		//System.out.println(instances);
 	}
 	
 	public String classify() {
@@ -88,12 +88,14 @@ public class Classify {
 			double pred = classifier.classifyInstance(instances.instance(0));
 			double distribution[] = classifier.distributionForInstance(instances.instance(0));
 
+			/*
 			System.out.println("===== Classified instance =====");
 			System.out.println("Instance: " + instances.instance(0));
 			
 			for (int i = 0; i < distribution.length; i++) {
 				System.out.println("distribution: " + String.valueOf(distribution[i]));
 			}
+			*/
 			
 			predictedCls = instances.classAttribute().value((int) pred);
 			System.out.println("Class predicted: " + predictedCls);

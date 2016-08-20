@@ -178,9 +178,12 @@ public class TweetPreprocessor {
         Instances textRaw = new Instances("TextInstances",atts,0);
         
         double[] vals = lp.getProcessed(tweet, tagger);
+        
+        /*
         for (double myItem : vals) {
         	System.out.println("Preprocessed lexicon: " + Double.toString(myItem));
         }
+        */
         
         textRaw.add(new SparseInstance(1.0, vals));
 		lexicon_instances = new Instances(textRaw);

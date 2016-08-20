@@ -16,6 +16,8 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
+import saitweet.Tweet;
+
 public class PolarityClassifier {
 
 	BidiMap<String, Integer> tba;
@@ -34,7 +36,7 @@ public class PolarityClassifier {
 	StringToWordVector stwv;
 	
 
-	/**
+	/*
 	 * Constructor of the class. 
 	 * tba, fba and cba refer to the (attribute-->index) relations.
 	 */
@@ -60,7 +62,9 @@ public class PolarityClassifier {
 		initializeClassifiers();
 	}
 	
-	/**Begins the algorithm.*/
+	/*
+	 * Begins the algorithm
+	 */
 	public String test(Instances[] all){
 		String output = "";
 		try {
@@ -75,7 +79,9 @@ public class PolarityClassifier {
 		reformatFeature(feature[0]);
 		reformatComplex(complex[0]);
 		try {
+			
 			output = apply();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,7 +95,7 @@ public class PolarityClassifier {
 	 * The main method that sets up all the processes of the Ensemble classifier. 
 	 * Returns the decision made by the two classifiers
 	 */
-	private String apply() throws Exception{
+	private String apply() throws Exception {
 		double[] hc = applyHC();		// applies the HC and returns the results
 		double lc = applyLC();			// same for LC
 		double content_pos_vals = (hc[0]+hc[2]+hc[4])/73.97;
@@ -111,10 +117,16 @@ public class PolarityClassifier {
 	
 	
 	
-	/**Applies the learned MNB models and returns the output of HC.*/
+	/*
+	 * Applies the learned MNB models and returns the output of HC
+	 * mnb_classifiers[0] - text representation
+	 * mnb_classifiers[1] - feature representation
+	 * mnb_classifiers[2] - complex representation
+	 */
 	private double[] applyHC() throws Exception{
 		
 		double[] scores = new double[6];
+		
 		for (int i=0; i<mnb_classifiers.length; i++){
 			Instances test = null;
 			if (i==0)
@@ -126,34 +138,44 @@ public class PolarityClassifier {
 			test.setClassIndex(0);	
 			
 			double[] preds = mnb_classifiers[i].distributionForInstance(test.get(0));	// gets the probabilities for each class (positive/negative)
-			if (i==0){
+			
+			if (i==0) {
 				scores[0] = preds[0]*31.07;
 				scores[1] = preds[1]*31.07;
-			} else if (i==1){
+				
+				// add the class distribution into list of class distribution for text
+				Tweet.setClassDistText(preds);
+				
+			} else if (i==1) {
 				scores[2] = preds[0]*11.95;
 				scores[3] = preds[1]*11.95;
-			} else if (i==2){
+				
+				// add the class distribution into list of class distribution for feature
+				Tweet.setClassDistFeature(preds);
+				
+			} else if (i==2) {
 				scores[4] = preds[0]*30.95;
 				scores[5] = preds[1]*30.95;
+				
+				// add the class distribution into list of class distribution for complex
+				Tweet.setClassDistComplex(preds);
+				
 			}
 		}
 		return scores;
 	}
 	
-	
-	
-	
-	
-	/**Applies the LC classifier (LBRepresentation)*/
+	/*
+	 * Applies the LC classifier (LBRepresentation)
+	 */
 	private double applyLC() throws Exception{
 		lexicon_instances.setClassIndex(6);
 		return lexicon_classifier.classifyInstance(lexicon_instances.instance(0));
 	}
 	
-	
-	
-	
-	/**Alters the order of the text representation's attributes according to the train files.*/
+	/*
+	 * Alters the order of the text representation's attributes according to the train files
+	 */
 	private void reformatText(Instances text_test){	
 		// remove the attributes from the test set that are not used in the train set
 		String[] options = new String[2];

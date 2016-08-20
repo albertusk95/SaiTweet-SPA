@@ -19,6 +19,8 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
+import saitweet.Tweet;
+
 public class SentimentAnalyser {
 	
 	Trainer tr;
@@ -145,6 +147,17 @@ public class SentimentAnalyser {
 	 */
 	public String getPolarity(String tweet){
 		
+		/*
+		 * Stores temporary predicted classes coming from:
+		 * - PolarityClassifier (tmp_predClass[0])
+		 * - classifyOnSlidingWindow (tmp_predClass[1])
+		 * - classifyOnModel (tmp_predClass[2])
+		 */
+		String[] tmp_predClass = new String[3];
+		tmp_predClass[0] = "undefined";
+		tmp_predClass[1] = "undefined";
+		tmp_predClass[2] = "undefined";
+		
 		tp.setTweet(tweet);
 		
 		/*
@@ -158,6 +171,9 @@ public class SentimentAnalyser {
 		
 		String out = pc.test(all);
 		
+		// initiates PolarityClassifier predicted class
+		tmp_predClass[0] = out;
+		
 		if (useSlidingWindow == true) {
 		//if (useSlidingWindow == false){
 			if (out.contains("pos") || out.contains("neg")) {	
@@ -165,30 +181,48 @@ public class SentimentAnalyser {
 				// then put this document in the training set			
 				double[] instanceValues = new double[train.numAttributes()];
 		        instanceValues[0] = train.attribute(0).addStringValue(tweet);
-		        if (out.contains("pos"))
+		        
+		        if (out.contains("pos")) {
 		        	instanceValues[1] = 0;
-		        else
+		        }
+		        else {
 		        	instanceValues[1] = 1;
+		        }
+		        
 		        if (train.numInstances()>1000){
 		        	train.remove(0);
 		        }
+		        
 		        train.add(new DenseInstance(1.0, instanceValues));
 			} else {		
 				// in case of HC & LC disagreement, 
 				// add the document in the test set; it will be classified in the end of the process
-				if (train.numInstances()>0)
+				if (train.numInstances() > 0) {
 					out = clarifyOnSlidingWindow(tweet);
-				else
+					tmp_predClass[1] = out;
+				}
+				else {
+					// unknown class for the train data is empty
 					out = "positive (random)";
+				}
 			}
-		} else {		// if useSlidingWindow is set to "true", then use the model
+		} else {		
+			// if useSlidingWindow is set to "false", then use the model
 			if (out.contains("pos") || out.contains("neg")) {
-				//System.out.println("use false");
+				
+				// set the list of predicted class comes from three possibilities
+				Tweet.setPredictedClass(tmp_predClass);
+				
 				return out;
 			} else {
 				out = clarifyOnModel(tweet);
+				tmp_predClass[2] = out;
 			}
 		}
+		
+		// set the list of predicted class comes from three possibilities
+		Tweet.setPredictedClass(tmp_predClass);
+		
 		return out;
 	}
 	

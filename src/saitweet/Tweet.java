@@ -21,8 +21,14 @@ public class Tweet {
 	public static List<String> qrTweets_Preprocessed = new ArrayList<String>();
 	public static List<String> qrTweets_PreprocFeature = new ArrayList<String>();
 	public static List<String> qrTweets_PreprocComplex = new ArrayList<String>();
-	
 	public static List<String> qrTweets_Semantic = new ArrayList<String>();
+	
+	public static List<double[]> qrTweets_ClassDistText = new ArrayList<double[]>();
+	public static List<double[]> qrTweets_ClassDistFeature = new ArrayList<double[]>();
+	public static List<double[]> qrTweets_ClassDistComplex = new ArrayList<double[]>();
+	
+	public static List<String[]> qrTweets_PredClass = new ArrayList<String[]>();
+	
 	public static int qrTweets_TotalItem;
 	
 	/*
@@ -72,6 +78,8 @@ public class Tweet {
  		}
 		  
 	}
+	
+	/** SETTER **/
 	
 	// set the query
 	public static void setQuery(String tweetQuery) {
@@ -125,6 +133,35 @@ public class Tweet {
 		qrTweets_PreprocComplex.add(sv);
 	}
 	
+	// set the list of class distribution (text)
+	public static void setClassDistText(double[] cd) {
+	
+		qrTweets_ClassDistText.add(cd);
+	}
+	
+	// set the list of class distribution (text)
+	public static void setClassDistFeature(double[] cd) {
+		
+		qrTweets_ClassDistFeature.add(cd);
+	}
+	
+	// set the list of class distribution (text)
+	public static void setClassDistComplex(double[] cd) {
+		
+		qrTweets_ClassDistComplex.add(cd);
+	}
+	
+	public static void setPredictedClass(String[] pcls) {
+		
+		for (String itm : pcls) {
+			System.out.println("predicted class: " + itm);
+		}
+		
+		qrTweets_PredClass.add(pcls);
+	}
+	
+	/** INITIALIZER **/
+	
 	// empty the list of tweet sentiment
 	public static void initTweetSentimentList() {
 		if (qrTweets_Sentiment != null) {
@@ -160,4 +197,32 @@ public class Tweet {
 		}
 	}
 	
+	// empty the list of class distribution text
+	public static void initClassDistText() {
+		if (qrTweets_ClassDistText != null) {
+			qrTweets_ClassDistText.clear();
+		}
+	}
+	
+	// empty the list of class distribution text
+	public static void initClassDistFeature() {
+		if (qrTweets_ClassDistFeature != null) {
+			qrTweets_ClassDistFeature.clear();
+		}
+	}
+		
+	// empty the list of class distribution text
+	public static void initClassDistComplex() {
+		if (qrTweets_ClassDistComplex != null) {
+			qrTweets_ClassDistComplex.clear();
+		}
+	}
+	
+	// empty the list of predicted class from PolarityClassifier (normal classification process)
+	public static void initPredClass() {
+		if (qrTweets_PredClass != null) {
+			qrTweets_PredClass.clear();
+		}
+	}
+
 }
