@@ -26,6 +26,7 @@ public class Tweet {
 	public static List<double[]> qrTweets_ClassDistText = new ArrayList<double[]>();
 	public static List<double[]> qrTweets_ClassDistFeature = new ArrayList<double[]>();
 	public static List<double[]> qrTweets_ClassDistComplex = new ArrayList<double[]>();
+	public static List<double[]> qrTweets_ClassDistLexicon = new ArrayList<double[]>();
 	
 	public static List<String[]> qrTweets_PredClass = new ArrayList<String[]>();
 	
@@ -151,6 +152,13 @@ public class Tweet {
 		qrTweets_ClassDistComplex.add(cd);
 	}
 	
+	// set the list of lexicon classifier result
+	public static void setClassDistLexicon(double[] lc) {
+		
+		qrTweets_ClassDistLexicon.add(lc);
+	}
+	
+	// set the list of predicted class
 	public static void setPredictedClass(String[] pcls) {
 		
 		for (String itm : pcls) {
@@ -215,6 +223,13 @@ public class Tweet {
 	public static void initClassDistComplex() {
 		if (qrTweets_ClassDistComplex != null) {
 			qrTweets_ClassDistComplex.clear();
+		}
+	}
+	
+	// empty the list of lexicon classifier result
+	public static void initClassDistLexicon() {
+		if (qrTweets_ClassDistLexicon != null) {
+			qrTweets_ClassDistLexicon.clear();
 		}
 	}
 	

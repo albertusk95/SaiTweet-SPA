@@ -53,10 +53,11 @@ public class Processor {
 		Tweet.initTweetPreprocFeature();
 		Tweet.initTweetPreprocComplex();
 		
-		// empty the list of class distribution (text, feature, and complex)
+		// empty the list of class distribution (text, feature, and complex) and lexicon classifier result
 		Tweet.initClassDistText();
 		Tweet.initClassDistFeature();
 		Tweet.initClassDistComplex();
+		Tweet.initClassDistLexicon();
 		
 		// empty the list of PolarityClassifier predicted class
 		Tweet.initPredClass();

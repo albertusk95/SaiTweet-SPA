@@ -98,6 +98,7 @@ public class PolarityClassifier {
 	private String apply() throws Exception {
 		double[] hc = applyHC();		// applies the HC and returns the results
 		double lc = applyLC();			// same for LC
+		
 		double content_pos_vals = (hc[0]+hc[2]+hc[4])/73.97;
 		double content_neg_vals = (hc[1]+hc[3]+hc[5])/73.97;
 		double hc_val = (1+content_pos_vals-content_neg_vals)/2;
@@ -144,6 +145,9 @@ public class PolarityClassifier {
 				scores[1] = preds[1]*31.07;
 				
 				// add the class distribution into list of class distribution for text
+				System.out.println("text pos: " + preds[0]);
+				System.out.println("text neg: " + preds[1]);
+				
 				Tweet.setClassDistText(preds);
 				
 			} else if (i==1) {
@@ -151,6 +155,9 @@ public class PolarityClassifier {
 				scores[3] = preds[1]*11.95;
 				
 				// add the class distribution into list of class distribution for feature
+				System.out.println("feature pos: " + preds[0]);
+				System.out.println("feature neg: " + preds[1]);
+				
 				Tweet.setClassDistFeature(preds);
 				
 			} else if (i==2) {
@@ -158,6 +165,9 @@ public class PolarityClassifier {
 				scores[5] = preds[1]*30.95;
 				
 				// add the class distribution into list of class distribution for complex
+				System.out.println("complex pos: " + preds[0]);
+				System.out.println("complex neg: " + preds[1]);
+				
 				Tweet.setClassDistComplex(preds);
 				
 			}
@@ -168,9 +178,30 @@ public class PolarityClassifier {
 	/*
 	 * Applies the LC classifier (LBRepresentation)
 	 */
-	private double applyLC() throws Exception{
+	private double applyLC() throws Exception {
+		
+		double lexiconResult;							// store the value of classifyInstance
+		double[] lexiconDist = new double[2];			// store the value of distributionForInstance
+		double[] lexiconPredAndDist = new double[3];	// store both of previous values
+		
 		lexicon_instances.setClassIndex(6);
-		return lexicon_classifier.classifyInstance(lexicon_instances.instance(0));
+		
+		lexiconResult = lexicon_classifier.classifyInstance(lexicon_instances.instance(0));
+		lexiconDist = lexicon_classifier.distributionForInstance(lexicon_instances.instance(0));
+		
+		lexiconPredAndDist[0] = lexiconResult;
+		lexiconPredAndDist[1] = lexiconDist[0];
+		lexiconPredAndDist[2] = lexiconDist[1];
+				
+		// set the lexicon classifier result into list
+		System.out.println("lexiconRes: " + lexiconResult);
+		for (double litem: lexiconDist) {
+			System.out.println("lexiconDist: " + litem);
+		}
+		
+		Tweet.setClassDistLexicon(lexiconPredAndDist);
+				
+		return lexiconResult;
 	}
 	
 	/*
