@@ -54,6 +54,9 @@ public class Runner {
 		// empty the list of semantic value
 		Tweet.initTweetSemanticList();
 	
+		// empty the list of class distribution for semantic
+		Tweet.initClassDistSemantic();
+		
 		// classify tweet semantic
 		for (String prepTxt : tweetPreproc) {
 			cl.makeInstance(prepTxt);

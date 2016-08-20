@@ -28,6 +28,8 @@ public class Tweet {
 	public static List<double[]> qrTweets_ClassDistComplex = new ArrayList<double[]>();
 	public static List<double[]> qrTweets_ClassDistLexicon = new ArrayList<double[]>();
 	
+	public static List<double[]> qrTweets_ClassDistSemantic = new ArrayList<double[]>();
+	
 	public static List<String[]> qrTweets_PredClass = new ArrayList<String[]>();
 	
 	public static int qrTweets_TotalItem;
@@ -48,7 +50,7 @@ public class Tweet {
 		Twitter twitter = new TwitterFactory(cb.build()).getInstance();
 				
 		Query query = new Query(tweet+" +exclude:retweets");
-		query.setCount(2); 	// set tweets per page to 2
+		query.setCount(20); 	// set tweets per page to 20
 		query.setLang("en");
 		
 		QueryResult qr = twitter.search(query);
@@ -161,11 +163,13 @@ public class Tweet {
 	// set the list of predicted class
 	public static void setPredictedClass(String[] pcls) {
 		
-		for (String itm : pcls) {
-			System.out.println("predicted class: " + itm);
-		}
-		
 		qrTweets_PredClass.add(pcls);
+	}
+	
+	// set the list of class distribution for semantic
+	public static void setClassDistSemantic(double[] ds) {
+		
+		qrTweets_ClassDistSemantic.add(ds);
 	}
 	
 	/** INITIALIZER **/
@@ -237,6 +241,13 @@ public class Tweet {
 	public static void initPredClass() {
 		if (qrTweets_PredClass != null) {
 			qrTweets_PredClass.clear();
+		}
+	}
+	
+	// empty the list of class distribution for semantic
+	public static void initClassDistSemantic() {
+		if (qrTweets_ClassDistSemantic != null) {
+			qrTweets_ClassDistSemantic.clear();
 		}
 	}
 
