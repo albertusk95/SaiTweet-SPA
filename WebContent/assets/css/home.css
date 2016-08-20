@@ -256,7 +256,7 @@ input, button {
 	padding-top: 170px;
 }
 
-.tweetContainer, .sentimentContainer, .moreMathContainer {
+.tweetContainer, .sentimentContainer, .moreMathContainer, .semanticContainer {
 	border-radius: 15px;
 	background-color: #ffffff;
 	margin-top: 90px;
@@ -296,21 +296,23 @@ td, th {
 
 .detailButtonContainer {
 	/*flex: 1;*/
-	float: left;
+	float:left;
+    display:inline-block;
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;
 	padding-right: 10px;
 	padding-bottom: 5px;
 	padding-left: 20px;
-	margin-right: 70px;
+	margin-right: 90px;
 	margin-bottom: 40px;
 	width: 140px;
 	height: 30px;
 }
 
 .detailAnalysisContainer {
-	/*float: left;*/
+	float:left;
+    display:inline-block;
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;
@@ -331,19 +333,19 @@ td, th {
 	padding-right: 10px;
 	padding-bottom: 5px;
 	padding-left: 20px;
-	width: 150px;
+	width: 250px;
 	height: 100px;
 }
 
 .titleContainer {
-	margin-bottom: 40px;
+	margin-bottom: 70px;
 	border-radius: 15px;
 	background-color: #c9c9c9;
 	padding-top: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 20px;
-	width: 150px;
+	width: 250px;
 	height: 100px;
 		
 }
