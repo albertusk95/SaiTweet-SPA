@@ -45,11 +45,27 @@ angular.module('primary', ['ngRoute'])
 	}
 	
 	
-	$scope.selectedID = -1;
+	//$scope.selectedID = -1;
+	
 	$scope.selectedTweetID = function() {
 		$scope.selectedID = $scope.selectedOption;
+		$scope.selectedMoreMath = -1;
 		console.log("selectedID: " + $scope.selectedID);
 	}
-		
+	
+	$scope.initMoreMath = function(item) {
+		$scope.selectedMoreMath = item;
+	}
+	
+	$scope.moreMathValidity = function() {
+		if ($scope.selectedID == $scope.selectedMoreMath) {
+			console.log("more math is valid");
+			return true;
+		} else {
+			console.log("more math is invalid");
+			return false;
+		}
+	}
+	
 }]);
 

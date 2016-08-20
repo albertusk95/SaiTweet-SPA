@@ -38,7 +38,12 @@
 <c:set var="tweetPrepropItem" value="<%= Tweet.qrTweets_Preprocessed %>" />
 <c:set var="tweetPrepropFeature" value="<%= Tweet.qrTweets_PreprocFeature %>" />
 <c:set var="tweetPrepropComplex" value="<%= Tweet.qrTweets_PreprocComplex %>" />
+<c:set var="classDistText" value="<%= Tweet.qrTweets_ClassDistText %>" />
+<c:set var="classDistFeature" value="<%= Tweet.qrTweets_ClassDistFeature %>" />
+<c:set var="classDistComplex" value="<%= Tweet.qrTweets_ClassDistComplex %>" />
+<c:set var="predClass" value="<%= Tweet.qrTweets_PredClass %>" />
 <c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
+
 
 <!-- DASHBOARD AREA -->
 <div class="testTweet" ng-show="selectedView === 0">
@@ -263,29 +268,29 @@
 			
 			<table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
 				<tr>
-					<td style="width: 25%; text-align: center;">Text</td>
-					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+					<td style="width: 20%; text-align: center;">Text</td>
+					<td colspan="3" style="text-align: center; max-width: 400px; word-wrap: break-word;">
 						<c:out value="${tweetTextItem.get(loopSentiment.index)}" />
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="3" style="width: 25%; text-align: center; vertical-align: middle;">
+					<td rowspan="3" style="width: 20%; text-align: center; vertical-align: middle;">
 						<b>Preprocessed</b>
 					</td>
 					<td style="width: 20%; text-align: center;">Text</td>
-					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
 						<c:out value="${tweetPrepropItem.get(loopSentiment.index)}" />
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%; text-align: center;">Feature</td>
-					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
 						<c:out value="${tweetPrepropFeature.get(loopSentiment.index)}" />
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%; text-align: center;">Complex</td>
-					<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
 						<c:out value="${tweetPrepropComplex.get(loopSentiment.index)}" />
 					</td>
 				</tr>
@@ -298,33 +303,45 @@
 						Text
 					</td>
 					<td>Positive</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistText.get(loopSentiment.index)[0]}" />
+					</td>
 				</tr>	
 				<tr>
 					<td>Negative</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistText.get(loopSentiment.index)[1]}" />
+					</td>
 				</tr>
 				<tr>
 					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
 						Feature
 					</td>
 					<td>Positive</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistFeature.get(loopSentiment.index)[0]}" />
+					</td>
 				</tr>
 				<tr>
 					<td>Negative</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistFeature.get(loopSentiment.index)[1]}" />
+					</td>
 				</tr>
 				<tr>
 					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
 						Complex
 					</td>
 					<td>Positive</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistComplex.get(loopSentiment.index)[0]}" />
+					</td>
 				</tr>
 				<tr>
 					<td>Negative</td>
-					<td>0</td>
+					<td style="text-align: center; max-width: 300px; word-wrap: break-word;">
+						<c:out value="${classDistComplex.get(loopSentiment.index)[1]}" />
+					</td>
 				</tr>
 				
 				<tr>
@@ -332,20 +349,143 @@
 						<b>Classification stage</b>
 					</td>
 					<td style="width: 20%; text-align: center;">Polarity Classifier</td>
-					<td>0</td>
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
+						<c:out value="${predClass.get(loopSentiment.index)[0]}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%; text-align: center;">classifyOnSW</td>
-					<td>0</td>
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
+						<c:out value="${predClass.get(loopSentiment.index)[1]}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%; text-align: center;">classifyOnModel</td>
-					<td>0</td>
+					<td colspan="2" style="text-align: center; max-width: 400px; word-wrap: break-word;">
+						<c:out value="${predClass.get(loopSentiment.index)[2]}" />
+					</td>
 				</tr>
 				
 				
 			</table>
 			
+			<!-- MORE MATH BUTTON -->
+			<div class="moreMathButtonContainer" ng-click="initMoreMath(${loopSentiment.index})">
+				More Math
+			</div>
+			
+		</div>
+		
+		<!-- MORE MATH -->
+		<div class="moreMathContainer" ng-show="moreMathValidity()">
+			<h1>Hello, this is More math container {{ selectedID }} {{ selectedMoreMath }}</h1>
+			
+			<table border="1" class="table table-hover" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td rowspan="6" style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Score</b>
+					</td>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Text
+					</td>
+					<td>Positive</td>
+					<td>
+						<c:out value="${classDistText.get(loopSentiment.index)[0] * 31.07}" />
+					</td>
+				</tr>
+				<tr>
+					<td>Negative</td>
+					<td>
+						<c:out value="${classDistText.get(loopSentiment.index)[1] * 31.07}" />
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Feature
+					</td>
+					<td>Positive</td>
+					<td>
+						<c:out value="${classDistFeature.get(loopSentiment.index)[0] * 11.95}" />
+					</td>	
+				</tr>
+				<tr>
+					<td>Negative</td>
+					<td>
+						<c:out value="${classDistFeature.get(loopSentiment.index)[1] * 11.95}" />
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="width: 20%; text-align: center; vertical-align: middle;">
+						Complex
+					</td>
+					<td>Positive</td>
+					<td>
+						<c:out value="${classDistComplex.get(loopSentiment.index)[0] * 30.95}" />
+					</td>	
+				</tr>
+				<tr>
+					<td>Negative</td>
+					<td>
+						<c:out value="${classDistComplex.get(loopSentiment.index)[1] * 30.95}" />
+					</td>
+				</tr>
+				
+				<c:set var="totalPosScore" value="${classDistText.get(loopSentiment.index)[0] * 31.07 + classDistFeature.get(loopSentiment.index)[0] * 11.95 + classDistComplex.get(loopSentiment.index)[0] * 30.95}" />
+				<c:set var="avgPosScore" value="${totalPosScore / 73.97}" />
+				<c:set var="totalNegScore" value="${classDistText.get(loopSentiment.index)[1] * 31.07 + classDistFeature.get(loopSentiment.index)[1] * 11.95 + classDistComplex.get(loopSentiment.index)[1] * 30.95}" />
+				<c:set var="avgNegScore" value="${totalNegScore / 73.97}" />
+				
+				<!-- Representation value -->
+				<c:set var="repValue" value="${(1 + avgPosScore - avgNegScore) / 2}" />
+				
+				<tr>	
+					<td style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Total positive score</b>
+					</td>
+					<td>
+						<c:out value="${totalPosScore}" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Average positive score</b>
+					</td>
+					<td>
+						<c:out value="${avgPosScore}" />
+					</td>	
+				</tr>
+				
+				<tr>	
+					<td style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Total negative score</b>
+					</td>
+					<td>
+						<c:out value="${totalNegScore}" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Average negative score</b>
+					</td>
+					<td>
+						<c:out value="${avgNegScore}" />
+					</td>	
+				</tr>
+				
+				<tr>
+					<td style="width: 20%; text-align: center; vertical-align: middle;">
+						<b>Representation final score</b>
+					</td>
+					<td>
+						<c:out value="${repValue}" />
+					</td>	
+				</tr>
+				
+				
+				
+			</table>
 		</div>
 		
 	</c:forEach>
