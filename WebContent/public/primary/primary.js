@@ -46,13 +46,14 @@ angular.module('primary', ['ngRoute'])
 	
 	
 	$scope.selectedID = -1;
-	//$scope.selectedMoreMath = -2;
 	
 	$scope.selectedTweetID = function() {
-		
-		$scope.selectedID = $scope.selectedOption;
-		//$scope.selectedMoreMath = -2;
-		
+		$scope.selectedID = $scope.selectedOption;	
+	}
+	
+	$scope.selectedIDSemantic = -1;
+	$scope.slctTweetIDSemantic = function() {
+		$scope.selectedIDSemantic = $scope.selectedOptSemantic;
 	}
 	
 	/*

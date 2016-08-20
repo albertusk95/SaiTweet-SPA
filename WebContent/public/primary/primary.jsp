@@ -33,6 +33,7 @@
 <c:set var="classDistLexicon" value="<%= Tweet.qrTweets_ClassDistLexicon %>" />
 <c:set var="predClass" value="<%= Tweet.qrTweets_PredClass %>" />
 <c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
+<c:set var="semanticPredAndDist" value="<%= Tweet.qrTweets_ClassDistSemantic %>" />
 
 
 
@@ -220,7 +221,7 @@
 		<h2>Select Tweet ID</h2>
 	</div>
 	
-	<div id="tweetIDContainer">
+	<div class="tweetIDContainer">
 		
 		<h2>Chosen: {{selectedID}}</h2>
 		
@@ -251,6 +252,7 @@
 		<div class="sentimentContainer" ng-show="selectedID == ${loopSentiment.index}">
 			
 			<table class="table table-hover" style="width: 100%; table-layout: fixed;">
+			<tbody>
 				<tr>
 					<td style="width: 20%; text-align: center;">Text</td>
 					<td colspan="3" style="text-align: center; max-width: 400px; word-wrap: break-word;">
@@ -350,7 +352,7 @@
 					</td>
 				</tr>
 				
-				
+			</tbody>
 			</table>
 			
 			<!-- MORE MATH BUTTON -->
@@ -370,6 +372,7 @@
 		<div class="moreMathContainer">
 		
 			<table class="table table-hover" style="width: 100%; table-layout: fixed;">
+			<tbody>
 				<tr>
 					<td rowspan="6" style="width: 20%; text-align: center; vertical-align: middle;">
 						<b>Score</b>
@@ -539,6 +542,7 @@
 						<c:out value="${predClass.get(loopSentiment.index)[0]}" />
 					</td>
 				</tr>
+			</tbody>
 			</table>
 		</div>
 		
@@ -548,5 +552,262 @@
 
 <!-- SEMANTIC AREA -->
 <div class="testTweet" ng-show="selectedView === 2">
+	
+	<div class="titleContainer">
+		<h2>Select Tweet ID</h2>
+	</div>
+	
+	<div class="tweetIDContainer">
+			
+		<h2>Chosen: {{selectedID}}</h2>
+		
+		<select class="form-control" ng-model="selectedOptSemantic" ng-change="slctTweetIDSemantic()">
+			
+			<!-- ORIGIN LOGIC -->
+			<c:choose>
+			    <c:when test="${tweetNum > 0}">
+					
+					<c:forEach var="tweetIDSem" begin="0" end="${tweetNum-1}">
+						<option><c:out value="${tweetIDSem}" /></option>	
+					</c:forEach>
+					        
+			    </c:when>    
+			    <c:otherwise>
+			                
+			    </c:otherwise>
+			</c:choose>
+			
+		</select>	
+	
+	</div>
+	
+	<c:forEach var="itemSemantic" begin="0" end="${tweetNum-1}" varStatus="loopSemantic">
+		
+		<div class="semanticContainer" ng-show="selectedIDSemantic == ${loopSemantic.index}">
+			
+			<table class="table table-hover" style="width: 100%; table-layout: fixed;">
+				<tbody>
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							Preprocessed text
+						</td>
+						<td style="text-align: center; max-width: 450px; word-wrap: break-word;">
+							<c:out value="${tweetPrepropItem.get(loopSemantic.index)}" />
+						</td>
+					</tr>
+						
+					<!-- 1 -->	
+					<tr>
+						<td rowspan="20" style="width: 25%; text-align: center; vertical-align: middle;">
+							Class distribution
+						</td>
+						<td style="width: 30%; text-align: center;">
+							atheism
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[1]}" />
+						</td>
+					</tr>
+						
+					<!-- 2 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							computer graphics
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[2]}" />
+						</td>
+					</tr>
+					
+					<!-- 3 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							computer OS Windows
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[3]}" />
+						</td>
+					</tr>
+					
+					<!-- 4 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							computer system IBM (PC / hardware)
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[4]}" />
+						</td>
+					</tr>
+					
+					<!-- 5 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							computer system MAC (hardware)
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[5]}" />
+						</td>
+					</tr>
+					
+					<!-- 6 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							computer Windows X
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[6]}" />
+						</td>
+					</tr>
+					
+					<!-- 7 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							misc.forsale
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[7]}" />
+						</td>
+					</tr>
+					
+					<!-- 8 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							rec.autos
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[8]}" />
+						</td>
+					</tr>
+					
+					<!-- 9 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							rec.motorcycles
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[9]}" />
+						</td>
+					</tr>
+					
+					<!-- 10 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							rec.sport.baseball
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[10]}" />
+						</td>
+					</tr>
+					
+					<!-- 11 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							rec.sport.hockey
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[11]}" />
+						</td>
+					</tr>
+					
+					<!-- 12 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							sci.crypt
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[12]}" />
+						</td>
+					</tr>
+					
+					<!-- 13 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							sci.electronics
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[13]}" />
+						</td>
+					</tr>
+					
+					<!-- 14 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							sci.med
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[14]}" />
+						</td>
+					</tr>
+					
+					<!-- 15 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							sci.space
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[15]}" />
+						</td>
+					</tr>
+					
+					<!-- 16 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							soc.religion.christian
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[16]}" />
+						</td>
+					</tr>
+					
+					<!-- 17 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							talk.politics.guns
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[17]}" />
+						</td>
+					</tr>
+					
+					<!-- 18 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							talk.politics.mideast
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[18]}" />
+						</td>
+					</tr>
+					
+					<!-- 19 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							talk.politics.misc
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[19]}" />
+						</td>
+					</tr>
+					
+					<!-- 20 -->
+					<tr>
+						<td style="width: 30%; text-align: center;">
+							talk.religion.misc
+						</td>
+						<td style="text-align: center;">
+							<c:out value="${semanticPredAndDist.get(loopSemantic.index)[20]}" />
+						</td>
+					</tr>
+					
+					<tr>
+						
+					</tr>
+					
+				</tbody>
+			</table>
+			
+		</div>
+		
+	</c:forEach>
 	
 </div>
