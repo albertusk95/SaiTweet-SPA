@@ -37,7 +37,6 @@
 <c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
 <c:set var="semanticPredAndDist" value="<%= Tweet.qrTweets_ClassDistSemantic %>" />
 
-<c:set var="visualItem" value="<%= PieChartData.pieDataList %>" />
 
 
 <!-- DASHBOARD AREA -->
@@ -871,10 +870,16 @@
 
 <!-- VISUAL VIEW CONTAINER (PIE GRAPH) -->
 <div class="testTweet" ng-show="selectedView === 3">
-	<div id="chart_div"></div>
+	
+	<div class="titleContainer">
+		<h2>Sentiment Chart</h2>
+	</div>
+	
+	<div class="chartContainer">
+	
+		<p>
+			<img src="assets/img/areachart.png" width="600" height="400" border="0" USEMAP="#chart" />
+	   	</p>
+		
+	</div>
 </div>
-
-
-
-<!-- VISUAL SCRIPT (PIE GRAPH) -->
-

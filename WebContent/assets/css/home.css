@@ -261,7 +261,7 @@ input, button {
 	padding-top: 170px;
 }
 
-.tweetContainer, .sentimentContainer, .moreMathContainer, .semanticContainer {
+.tweetContainer, .sentimentContainer, .moreMathContainer, .semanticContainer, .chartContainer {
 	border-radius: 15px;
 	background-color: #ffffff;
 	margin-top: 90px;
