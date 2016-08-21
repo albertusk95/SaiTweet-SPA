@@ -56,25 +56,5 @@ angular.module('primary', ['ngRoute'])
 		$scope.selectedIDSemantic = $scope.selectedOptSemantic;
 	}
 	
-	/*
-	$scope.initMoreMath = function(item) {
-		$scope.selectedMoreMath = item;
-		
-		console.log("selectedMoreMath: " + $scope.selectedMoreMath);
-	}
-	*/
-	
-	/*
-	$scope.moreMathValidity = function() {
-		if ($scope.selectedID == $scope.selectedMoreMath) {
-			console.log("more math is valid");
-			return true;
-		} else {
-			console.log("more math is invalid");
-			return false;
-		}
-	}
-	*/
-	
 }]);
 

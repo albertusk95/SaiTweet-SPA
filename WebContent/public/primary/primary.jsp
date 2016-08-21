@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ page import="saitweet.Tweet" %>
+<%@ page import="visuals.PieChartData" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -13,6 +14,7 @@
 		<li><a ng-class="{'activePrimary': selectedView === 0}" ng-click="setView(0)">DASHBOARD</a></li>
 		<li><a ng-class="{'activePrimary': selectedView === 1}" ng-click="setView(1)">SENTIMENT</a></li>
 		<li><a ng-class="{'activePrimary': selectedView === 2}" ng-click="setView(2)">SEMANTIC</a></li>
+		<li><a ng-class="{'activePrimary': selectedView === 3}" ng-click="setView(3)">VISUAL</a></li>
 	</ul>
 
 </div>
@@ -35,6 +37,7 @@
 <c:set var="semanticItem" value="<%= Tweet.qrTweets_Semantic %>" />
 <c:set var="semanticPredAndDist" value="<%= Tweet.qrTweets_ClassDistSemantic %>" />
 
+<c:set var="visualItem" value="<%= PieChartData.pieDataList %>" />
 
 
 <!-- DASHBOARD AREA -->
@@ -44,6 +47,15 @@
 			<h1>Total tweet: <c:out value="${tweetNum}" /></h1>
 		</div>
 		
+		<c:choose>
+		
+		<c:when test="${tweetNum == 0}">
+			<div class="tweetContainer">
+	    		<h1>Tweet not found</h1>
+	    	</div>
+	  	</c:when>
+	  			
+		<c:otherwise>
 		<c:forEach var="item" items="<%= Tweet.qrTweets %>" varStatus="loop">
 			
 			<div class="tweetContainer">
@@ -220,6 +232,10 @@
 		
 		</c:forEach>
 		
+		</c:otherwise>
+	
+		</c:choose>
+	
 </div>
 
 <!-- SENTIMENT AREA -->
@@ -254,7 +270,15 @@
 	</div>
 	
 	<!-- BISA DITAMPILKAN USESLIDINGWINDOW, FILTER, TOKENIZER NYA -->
+	<c:choose>
 	
+	<c:when test="${tweetNum == 0}">
+		<div class="sentimentContainer">
+			<h1>Tweet not found</h1>
+		</div>
+	</c:when>
+	
+	<c:otherwise>
 	<c:forEach var="itemSentiment" begin="0" end="${tweetNum-1}" varStatus="loopSentiment">
 		
 		<div class="sentimentContainer" ng-show="selectedID == ${loopSentiment.index}">
@@ -558,6 +582,10 @@
 		
 		</div>
 	</c:forEach>
+	
+	</c:otherwise>
+	
+	</c:choose>
 </div>
 
 <!-- SEMANTIC AREA -->
@@ -591,6 +619,15 @@
 	
 	</div>
 	
+	<c:choose>
+	
+	<c:when test="${tweetNum == 0}">
+		<div class="semanticContainer">
+			<h1>Tweet not found</h1>
+		</div>
+	</c:when>
+	
+	<c:otherwise>
 	<c:forEach var="itemSemantic" begin="0" end="${tweetNum-1}" varStatus="loopSemantic">
 		
 		<div class="semanticContainer" ng-show="selectedIDSemantic == ${loopSemantic.index}">
@@ -825,4 +862,19 @@
 		
 	</c:forEach>
 	
+	</c:otherwise>
+	
+	</c:choose>
 </div>
+
+
+
+<!-- VISUAL VIEW CONTAINER (PIE GRAPH) -->
+<div class="testTweet" ng-show="selectedView === 3">
+	<div id="chart_div"></div>
+</div>
+
+
+
+<!-- VISUAL SCRIPT (PIE GRAPH) -->
+

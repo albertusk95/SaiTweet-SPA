@@ -52,18 +52,23 @@
 
 /*
 #navbarVertical li a{
-	overflow: auto;
+	width: 100%;
 }
 */
-
 .selectedView {
 	margin-left:25%;
 	padding:1px 16px;
 	height:1000px;
 }
 
+/*
+.navbar-nav li a {
+	width: 100%;
+}
+*/
+
 .navbar-fixed-left {
-  width: 155px;
+  width: 150px;
   position: fixed;
   border-radius: 0;
   height: 100%;  
@@ -134,7 +139,7 @@ body {
 .activePrimary {
 	width: 100%;
 	background-color: #898686;
-	color: #000000;
+	color: #ffffff;
 }
 
 /* toggle keyword when there is a hovering action */
@@ -341,13 +346,11 @@ td, th {
 	margin-bottom: 70px;
 	border-radius: 15px;
 	background-color: #c9c9c9;
-	padding-top: 5px;
+	padding-top: 7px;
 	padding-right: 5px;
-	padding-bottom: 5px;
 	padding-left: 20px;
 	width: 250px;
-	height: 100px;
-		
+	height: 70px;
 }
 
 /*
