@@ -80,7 +80,7 @@ public class FormService extends HttpServlet {
 		//Runner.startRunner();
 		
 		// initiates visual data (graph)
-		PieChartData.setChartData();
+		PieChartData.startVisualize();
 		
 		// debugging
 		System.out.println("HELLO DOPOST");
