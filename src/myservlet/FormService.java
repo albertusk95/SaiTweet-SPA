@@ -17,6 +17,7 @@ import twitter4j.TwitterException;
 import saitweet.Tweet;
 import sentiment.Processor;
 import semantic.Runner;
+import visuals.PieChartData;
 
 /**
  * Servlet implementation class FormService
@@ -54,8 +55,8 @@ public class FormService extends HttpServlet {
 		// checkbox value
 		String[] socmedCheck = request.getParameterValues("socmed_check");
 		
-		// extract Twitter data
-		
+		// extracts Twitter data
+		/*
 		try {
 			Tweet.setQuery(query);
 			Tweet.extractTweet(query);
@@ -64,17 +65,22 @@ public class FormService extends HttpServlet {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+		*/
 		
-		// initiate sentiment processor
+		// initiates sentiment processor
+		/*
 		try {
 			Processor.startProcessor();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 		
-		// initiate semantic processor
-		Runner.startRunner();
+		// initiates semantic processor
+		//Runner.startRunner();
 		
+		// initiates visual data (graph)
+		PieChartData.setChartData();
 		
 		// debugging
 		System.out.println("HELLO DOPOST");

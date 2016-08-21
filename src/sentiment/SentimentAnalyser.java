@@ -277,9 +277,9 @@ public class SentimentAnalyser {
         	test_instance.setClassIndex(0);
         	double[] preds = multiNB.distributionForInstance(test_instance.get(0));
         	if (preds[0]>0.5)
-        		out = "light positive";
+        		out = "positive";
         	else
-        		out = "light negative";
+        		out = "negative";
         } catch (Exception e){
         	e.printStackTrace();
         }

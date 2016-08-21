@@ -50,7 +50,7 @@ public class Tweet {
 		Twitter twitter = new TwitterFactory(cb.build()).getInstance();
 				
 		Query query = new Query(tweet+" +exclude:retweets");
-		query.setCount(20); 	// set tweets per page to 20
+		query.setCount(10); 	// set tweets per page to 10
 		query.setLang("en");
 		
 		QueryResult qr = twitter.search(query);
