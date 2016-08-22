@@ -241,7 +241,7 @@
 <div class="testTweet" ng-show="selectedView === 1">
 	
 	<div class="titleContainer">
-		<h2>Select Tweet ID</h2>
+		<h1>Select Tweet ID</h1>
 	</div>
 	
 	<div class="tweetIDContainer">
@@ -591,7 +591,7 @@
 <div class="testTweet" ng-show="selectedView === 2">
 	
 	<div class="titleContainer">
-		<h2>Select Tweet ID</h2>
+		<h1>Select Tweet ID</h1>
 	</div>
 	
 	<div class="tweetIDContainer">
@@ -872,14 +872,25 @@
 <div class="testTweet" ng-show="selectedView === 3">
 	
 	<div class="titleContainer">
-		<h2>Sentiment Chart</h2>
+		<h1>Sentiment Chart</h1>
 	</div>
 	
-	<div class="chartContainer">
+	<c:choose>
 	
-		<p>
-			<img src="assets/img/areachart.png" width="600" height="400" border="0" USEMAP="#chart" />
-	   	</p>
+	<c:when test="${tweetNum == 0}">
+		<div class="chartContainer">
+			<h1>Tweet not found</h1>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="chartContainer">
 		
-	</div>
+			<p>
+				<img src="assets/img/PieChart.png" width="640" height="480" border="0" />
+		   	</p>
+			
+		</div>
+	</c:otherwise>
+	
+	</c:choose>
 </div>

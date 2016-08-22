@@ -4,10 +4,7 @@ var app = angular.module('saitweet', [
     'queryContainer',
 	'whatisit',
 	'contact',
-	'primary',
-	'preview',
-	'link2',
-	'link3'
+	'primary'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

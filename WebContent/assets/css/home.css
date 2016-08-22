@@ -123,7 +123,8 @@ body {
 .toggle-keyword {
 	font-size: 20px;
 	font-family: 'Oswald', sans-serif;
-	padding-right: 45px;
+	/*padding-right: 45px;*/
+	margin-right: 70px;
 }
 
 .active {
@@ -203,7 +204,8 @@ input[type=text]:focus {
 
 
 input, button {
-	outline: none;
+	/*outline: none;*/
+	margin: 0;
 }
 
 .inputWithButton{
@@ -226,7 +228,9 @@ input, button {
 }
 
 .inputWithButton > button{
-    border-left:1px solid gray;
+    /*border-left:1px solid gray;*/
+    
+    border-left:8px solid #444;
     background:#A30000;
     border:8px solid #A30000;
     color:#fff;
@@ -244,7 +248,8 @@ input, button {
 
 /* Social media */
 #social-media {
-	margin-top: 50px;
+	/*margin-top: 50px;*/
+	margin-top: 30px;
 }
 
 /* CONTENT FOR ANALYSIS */
@@ -261,12 +266,20 @@ input, button {
 	padding-top: 170px;
 }
 
-.tweetContainer, .sentimentContainer, .moreMathContainer, .semanticContainer, .chartContainer {
+.tweetContainer, .sentimentContainer, .semanticContainer, .chartContainer {
 	border-radius: 15px;
 	background-color: #ffffff;
 	margin-top: 90px;
 	margin-bottom: 5px;
 	display: table;
+}
+
+.moreMathContainer {
+	border-radius: 15px;
+	background-color: #ffffff;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	display: table;	
 }
 
 /*
@@ -331,26 +344,26 @@ td, th {
 
 .moreMathIntro {
 	margin-top: 50px; 
-	margin-bottom: 40px;
-	border-radius: 15px;
-	background-color: #c9c9c9;
+	margin-bottom: 20px;
+	/*border-radius: 15px;*/
+	/*background-color: #c9c9c9;*/
 	padding-top: 5px;
 	padding-right: 10px;
 	padding-bottom: 5px;
-	padding-left: 20px;
-	width: 250px;
+	/*padding-left: 20px;*/
+	width: 350px;
 	height: 100px;
 }
 
 .titleContainer {
 	margin-bottom: 70px;
-	border-radius: 15px;
-	background-color: #c9c9c9;
+	/*border-radius: 15px;*/
+	/*background-color: #c9c9c9;*/
 	padding-top: 7px;
 	padding-right: 5px;
-	padding-left: 20px;
-	width: 250px;
-	height: 70px;
+	/*padding-left: 20px;*/
+	width: 350px;
+	height: 50px;
 }
 
 /*
