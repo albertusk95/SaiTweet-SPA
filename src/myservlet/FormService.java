@@ -52,11 +52,9 @@ public class FormService extends HttpServlet {
 		// query text
 		String query = request.getParameter("query");
 		
-		// checkbox value
-		String[] socmedCheck = request.getParameterValues("socmed_check");
 		
 		// extracts Twitter data
-		/*
+		
 		try {
 			Tweet.setQuery(query);
 			Tweet.extractTweet(query);
@@ -65,19 +63,18 @@ public class FormService extends HttpServlet {
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		// initiates sentiment processor
-		/*
+		
 		try {
 			Processor.startProcessor();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		*/
 		
 		// initiates semantic processor
-		//Runner.startRunner();
+		Runner.startRunner();
 		
 		// initiates visual data (graph)
 		PieChartData.startVisualize();

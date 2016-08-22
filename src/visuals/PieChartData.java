@@ -3,6 +3,7 @@ package visuals;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
@@ -10,7 +11,10 @@ import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.entity.StandardEntityCollection;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
@@ -20,14 +24,15 @@ import saitweet.Tweet;
 
 public class PieChartData {
 	
+	/*
 	public static void startVisualize() {
 	
 		String pathToRes = System.getProperty("user.home") + "/workspace/TwitterServlet/WebContent/assets/img/";
 		//String pathToRes = "http://localhost:8080/TwitterServlet/assets/img/";
 		
 		double[][] data = new double[][]{
-		  {100, 400, 200, 300, 100},
-		  {500, 900, 300, 300, 500}
+		  {100, 200, 100, 100, 100},
+		  {500, 300, 100, 100, 100}
 		  };
 
 		 final CategoryDataset dataset = DatasetUtilities.createCategoryDataset(  "Team ", "", data);
@@ -51,8 +56,9 @@ public class PieChartData {
 		}
 	
 	}
+	*/
 	
-	/*
+	
 	// get the number of positive sentiment
 	public static int getNumPos() {
 		
@@ -101,30 +107,33 @@ public class PieChartData {
 	       true,
 	       false);
 	       
+	   
+	    PiePlot plot = (PiePlot) chart.getPlot();
+        //plot.setSectionPaint(KEY1, Color.green);
+        //plot.setSectionPaint(KEY2, Color.red);
+        plot.setExplodePercent("positive", 0.10);
+        //plot.setSimpleLabels(true);
+
+        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator("{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
+        plot.setLabelGenerator(gen);
+	    
+        
 	    int width = 640; 
 	    int height = 480; 
 	    
-	    File pieChart = null;
-	    
 	    try {
-	    	pieChart = new File(pathToRes + "PieChart.png"); 
+	    	
+	    	ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+
+	    	File pieChart = new File(pathToRes + "PieChart.png"); 
 	    
-	    	if (pieChart.createNewFile()){
-	    		System.out.println("File is created!");
-	    	}
+	    	ChartUtilities.saveChartAsPNG(pieChart , chart , width , height, info);
+			
 	    } catch (Exception e) {
-	    	System.out.println("Exception in startVisualize(): make file");
+	    	System.out.println("Exception in startVisualize()");
+	    	e.printStackTrace();
 	    }
 	    
-	    try {
-	    	ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
-		  
-			ChartUtilities.saveChartAsPNG(pieChart , chart , width , height, info);
-		} catch (IOException e) {
-			System.out.println("Exception in startVisualize()");
-			e.printStackTrace();
-		}
-		
 	}
-	*/
+	
 }
